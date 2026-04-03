@@ -1,261 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>About – Pinar Foundation</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Pinar Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-.about-hero{
-background:linear-gradient(120deg,#244F96,#3B6EC2);
-color:white;
-padding:100px 0;
-text-align:center;
+:root{
+--primary:#244F96;
+--secondary:#3B6EC2;
+--accent:#6FA8FF;
+--light:#F5F7FB;
+--dark:#1f2937;
 }
 
-.story{
-max-width:800px;
-margin:auto;
-font-size:18px;
-line-height:1.8;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+
+body{background:var(--light);color:var(--dark);line-height:1.7;overflow-x:hidden}
+
+.container{width:90%;max-width:1200px;margin:auto}
+
+/* NAVBAR */
+nav{background:white;box-shadow:0 5px 20px rgba(0,0,0,0.05);position:sticky;top:0;z-index:100}
+
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary);font-size:20px}
+
+.logo img{height:40px}
+
+nav ul{display:flex;gap:30px;list-style:none;align-items:center}
+
+nav a{text-decoration:none;color:var(--dark);font-weight:500;transition:.3s}
+
+nav a:hover{color:var(--primary)}
+
+.lang-btn{border:1px solid var(--primary);padding:6px 12px;border-radius:6px;cursor:pointer;color:var(--primary);font-weight:500}
+
+/* HERO */
+.hero{
+background:linear-gradient(-45deg,#244F96,#3B6EC2,#6FA8FF,#244F96);
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
+color:white;padding:170px 0
 }
 
-.mission-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
-margin-top:40px;
-}
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
-.mission-box{
-background:white;
-padding:40px;
-border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
-}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 
-.values-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
-margin-top:40px;
-}
+.hero h1{font-size:56px;margin-bottom:20px;line-height:1.2}
 
-.value{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
-text-align:center;
-}
+.hero p{font-size:18px;margin-bottom:30px}
 
-.value h4{
-color:#244F96;
-margin-bottom:10px;
+.hero-img img{width:100%;border-radius:14px;box-shadow:0 25px 60px rgba(0,0,0,0.25);animation:float 5s ease-in-out infinite}
+
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-15px)}100%{transform:translateY(0)}}
+
+.btn{display:inline-block;background:white;color:var(--primary);padding:14px 30px;border-radius:8px;text-decoration:none;font-weight:600;transition:.3s}
+
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,0.2)}
+
+.section{padding:100px 0}
+
+.section h2{font-size:38px;color:var(--primary);margin-bottom:20px}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:40px}
+
+.card{background:white;padding:35px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.05);transition:.35s;text-align:center}
+
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,0.08)}
+
+.icon{font-size:42px;color:var(--primary);margin-bottom:15px;transition:.4s}
+
+.card:hover .icon{transform:scale(1.2) rotate(5deg);color:var(--secondary)}
+
+/* IMPACT */
+.impact{background:var(--primary);color:white;padding:100px 0}
+
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;text-align:center}
+
+.impact h3{font-size:48px}
+
+.impact-icon{font-size:36px;margin-bottom:10px;animation:iconFloat 4s ease-in-out infinite}
+
+@keyframes iconFloat{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+/* CTA */
+.cta{background:linear-gradient(120deg,#3B6EC2,#244F96);color:white;text-align:center;padding:120px 0}
+
+.cta h2{font-size:40px;margin-bottom:20px}
+
+footer{background:#1d3f73;color:white;padding:40px 0;text-align:center}
+
+/* SCROLL ANIMATION */
+.reveal{opacity:0;transform:translateY(40px);transition:1s}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+.hero-grid{grid-template-columns:1fr;text-align:center}
+nav ul{gap:15px}
 }
 
 </style>
-
 </head>
 
 <body>
 
-
 <nav>
-
 <div class="container nav-container">
 
 <div class="logo">
-<img src="images/logo.png">
-Pinar Foundation
+<img src="https://res.cloudinary.com/djexglfns/image/upload/v1773474210/image_5_xisuga.jpg">Foundation
 </div>
 
 <ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="programs.html">Programs</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="news.html">News</a></li>
-<li><a href="donate.html">Donate</a></li>
+<li><a href="index.html" data-en="Home" data-id="Beranda">Home</a></li>
+<li><a href="about.html" data-en="About" data-id="Tentang">About</a></li>
+<li><a href="programs.html" data-en="Programs" data-id="Program">Programs</a></li>
+<li><a href="research.html" data-en="Research" data-id="Riset">Research</a></li>
+<li><a href="news.html" data-en="News" data-id="Berita">News</a></li>
+<li><a href="donate.html" data-en="Donate" data-id="Donasi">Donate</a></li>
+<li><button class="lang-btn" onclick="toggleLanguage()">ID</button></li>
 </ul>
 
 </div>
-
 </nav>
 
+<!-- HERO ABOUT -->
+<section class="hero">
+<div class="container hero-grid">
 
-<section class="about-hero">
+<div>
+<h1 data-en="About Pinar Foundation" data-id="Tentang Pinar Foundation">
+About Pinar Foundation
+</h1>
 
-<div class="container">
-
-<h1>About Pinar Foundation</h1>
-
-<p>
-Advancing maternal and child health through research, innovation, and community action.
+<p data-en="We are a non-profit organization dedicated to improving maternal and child health through research, innovation, and community empowerment."
+data-id="Kami adalah organisasi nirlaba yang berfokus pada peningkatan kesehatan ibu dan anak melalui riset, inovasi, dan pemberdayaan masyarakat.">
+We are a non-profit organization dedicated to improving maternal and child health through research, innovation, and community empowerment.
 </p>
 
 </div>
 
+<div class="hero-img">
+<img src="https://images.unsplash.com/photo-1584515933487-779824d29309">
+</div>
+
+</div>
 </section>
 
 
-<section class="section">
-
+<!-- ABOUT STORY -->
+<section class="section reveal">
 <div class="container">
 
-<h2>Our Story</h2>
+<h2 data-en="Who We Are" data-id="Siapa Kami">Who We Are</h2>
 
-<div class="story">
+<p style="max-width:800px;margin-top:20px"
+data-en="Pinar Foundation was established to respond to ongoing challenges in maternal and child health, particularly in communities where access to quality care remains limited. While important progress has been made, many women and children still face preventable risks due to gaps in services, information, and support systems.
 
-<p>
-Pinar Foundation was established with a vision to improve the wellbeing of mothers and children through evidence-based programs and collaborative partnerships. Across many communities, mothers and children still face barriers to accessing quality health services, nutrition, and reliable health information.
-</p>
+Our work focuses on bridging these gaps by connecting research with practical solutions. We collaborate with local partners, health providers, and policymakers to design and implement programs that are relevant, evidence-informed, and grounded in community realities.
 
-<br>
+Through this approach, we aim to contribute to stronger health systems and more equitable access to care, so that every mother and child has the opportunity to live a healthy and safe life."
+data-id="Pinar Foundation didirikan untuk merespons berbagai tantangan yang masih berlangsung dalam kesehatan ibu dan anak, terutama di komunitas dengan akses layanan yang terbatas. Meskipun telah ada kemajuan, banyak perempuan dan anak masih menghadapi risiko yang sebenarnya dapat dicegah akibat kesenjangan layanan, informasi, dan sistem dukungan.
 
-<p>
-Recognizing these challenges, Pinar Foundation works to bridge research, community action, and policy advocacy. By generating data and implementing innovative programs, the foundation aims to support sustainable improvements in maternal and child health outcomes.
-</p>
+Kami berfokus untuk menjembatani kesenjangan tersebut dengan menghubungkan riset dan implementasi di lapangan. Kami bekerja sama dengan mitra lokal, tenaga kesehatan, dan pembuat kebijakan untuk merancang serta menjalankan program yang relevan, berbasis bukti, dan sesuai dengan konteks masyarakat.
 
-<br>
-
-<p>
-Our work focuses on empowering communities, strengthening health systems, and producing research that informs better health policies and programs.
+Melalui pendekatan ini, kami berupaya memperkuat sistem kesehatan dan meningkatkan akses yang lebih adil, sehingga setiap ibu dan anak memiliki kesempatan untuk hidup sehat dan aman.">
+Pinar Foundation was established to respond to ongoing challenges in maternal and child health, particularly in communities where access to quality care remains limited.
 </p>
 
 </div>
-
-</div>
-
 </section>
 
 
-<section class="section">
-
+<!-- VISION MISSION -->
+<section class="section reveal">
 <div class="container">
 
-<h2>Mission & Vision</h2>
+<h2 data-en="Vision & Mission" data-id="Visi & Misi">Vision & Mission</h2>
 
-<div class="mission-grid">
+<div class="grid">
 
-<div class="mission-box">
-
-<h3>Our Mission</h3>
-
-<p>
-To improve maternal and child health through research, community engagement, and evidence-informed policy advocacy.
+<div class="card">
+<h3 data-en="Our Vision" data-id="Visi Kami">Our Vision</h3>
+<p data-en="A world where every mother and child lives a healthy and dignified life."
+data-id="Dunia di mana setiap ibu dan anak hidup sehat dan bermartabat.">
+A world where every mother and child lives a healthy and dignified life.
 </p>
-
 </div>
 
-<div class="mission-box">
-
-<h3>Our Vision</h3>
-
-<p>
-A future where every mother and child can live healthy, safe, and thriving lives regardless of their social or economic circumstances.
+<div class="card">
+<h3 data-en="Our Mission" data-id="Misi Kami">Our Mission</h3>
+<p data-en="To advance maternal and child health through research, policy advocacy, and community-driven programs."
+data-id="Meningkatkan kesehatan ibu dan anak melalui riset, advokasi kebijakan, dan program berbasis komunitas.">
+To advance maternal and child health through research, policy advocacy, and community-driven programs.
 </p>
-
 </div>
 
 </div>
 
 </div>
-
 </section>
 
 
-<section class="section">
-
+<!-- VALUES -->
+<section class="impact">
 <div class="container">
 
-<h2>Our Approach</h2>
+<h2 style="text-align:center;margin-bottom:40px"
+data-en="Our Values"
+data-id="Nilai Kami">
+Our Values
+</h2>
 
-<div class="values-grid">
+<div class="impact-grid">
 
-<div class="value">
-
-<h4>Research Driven</h4>
-
-<p>
-Producing high-quality evidence to guide health programs and policies.
+<div>
+<h3 data-en="Integrity" data-id="Integritas">Integrity</h3>
+<p data-en="We uphold transparency and accountability in all our work."
+data-id="Kami menjunjung tinggi transparansi dan akuntabilitas dalam setiap kegiatan.">
+We uphold transparency and accountability in all our work.
 </p>
-
 </div>
 
-<div class="value">
-
-<h4>Community Focused</h4>
-
-<p>
-Working with communities to understand needs and co-create solutions.
+<div>
+<h3 data-en="Equity" data-id="Kesetaraan">Equity</h3>
+<p data-en="We ensure inclusive access to health services for all communities."
+data-id="Kami memastikan akses layanan kesehatan yang inklusif bagi semua komunitas.">
+We ensure inclusive access to health services for all communities.
 </p>
-
 </div>
 
-<div class="value">
-
-<h4>Policy Engagement</h4>
-
-<p>
-Supporting policy dialogue to strengthen maternal and child health systems.
+<div>
+<h3 data-en="Innovation" data-id="Inovasi">Innovation</h3>
+<p data-en="We embrace research and innovation to drive sustainable change."
+data-id="Kami mendorong riset dan inovasi untuk menciptakan perubahan yang berkelanjutan.">
+We embrace research and innovation to drive sustainable change.
 </p>
-
-</div>
-
-<div class="value">
-
-<h4>Innovation</h4>
-
-<p>
-Using new approaches and technology to improve health outcomes.
-</p>
-
 </div>
 
 </div>
 
 </div>
-
 </section>
 
 
+<!-- CTA -->
 <section class="cta">
-
 <div class="container">
 
-<h2>Partner With Us</h2>
+<h2 data-en="Work With Us" data-id="Bekerja Bersama Kami">
+Work With Us
+</h2>
 
-<p>
-We welcome collaboration with researchers, communities, and partners to advance maternal and child health.
+<p data-en="Join us in creating meaningful impact for mothers and children."
+data-id="Mari bersama menciptakan dampak nyata bagi ibu dan anak.">
+Join us in creating meaningful impact for mothers and children.
 </p>
 
 <br>
 
-<a class="btn" href="donate.html">Support Our Work</a>
+<a class="btn"
+href="donate.html"
+data-en="Support Us"
+data-id="Dukung Kami">
+Support Us
+</a>
 
 </div>
-
 </section>
-
 
 <footer>
-
 <p>© 2026 Pinar Foundation</p>
-
-<p>Advancing Maternal and Child Health</p>
-
 </footer>
 
+<script>
+
+/* LANGUAGE SWITCH */
+let currentLang = localStorage.getItem("lang") || "en";
+
+function setLanguage(lang){
+
+document.querySelectorAll("[data-en]").forEach(el=>{
+el.innerText = el.dataset[lang];
+});
+
+localStorage.setItem("lang",lang);
+
+document.querySelector(".lang-btn").innerText = lang === "en" ? "ID" : "EN";
+
+currentLang = lang;
+
+}
+
+function toggleLanguage(){
+setLanguage(currentLang === "en" ? "id" : "en");
+}
+
+setLanguage(currentLang);
+
+/* COUNTER */
+const counters=document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+counter.innerText='0';
+
+const updateCounter=()=>{
+
+const target=+counter.getAttribute('data-target');
+const c=+counter.innerText;
+
+const increment=target/200;
+
+if(c<target){
+
+counter.innerText=Math.ceil(c+increment);
+setTimeout(updateCounter,10);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+};
+
+updateCounter();
+
+});
+
+/* SCROLL REVEAL */
+function reveal(){
+
+var reveals=document.querySelectorAll(".reveal");
+
+for(var i=0;i<reveals.length;i++){
+
+var windowHeight=window.innerHeight;
+var elementTop=reveals[i].getBoundingClientRect().top;
+var elementVisible=120;
+
+if(elementTop<windowHeight-elementVisible){
+reveals[i].classList.add("active");
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
+
+</script>
 
 </body>
-
 </html>
