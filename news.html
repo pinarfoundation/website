@@ -1,266 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>News – Pinar Foundation</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Pinar Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-.news-hero{
-background:linear-gradient(120deg,#244F96,#3B6EC2);
-color:white;
-padding:100px 0;
-text-align:center;
+:root{
+--primary:#244F96;
+--secondary:#3B6EC2;
+--accent:#6FA8FF;
+--light:#F5F7FB;
+--dark:#1f2937;
 }
 
-.featured{
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+
+body{background:var(--light);color:var(--dark);line-height:1.7;overflow-x:hidden}
+
+.container{width:90%;max-width:1200px;margin:auto}
+
+/* NAVBAR */
+nav{background:white;box-shadow:0 5px 20px rgba(0,0,0,0.05);position:sticky;top:0;z-index:100}
+
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary);font-size:20px}
+
+.logo img{height:40px}
+
+nav ul{display:flex;gap:30px;list-style:none;align-items:center}
+
+nav a{text-decoration:none;color:var(--dark);font-weight:500;transition:.3s}
+
+nav a:hover{color:var(--primary)}
+
+.lang-btn{border:1px solid var(--primary);padding:6px 12px;border-radius:6px;cursor:pointer;color:var(--primary);font-weight:500}
+
+/* HERO */
+.hero{
+background:linear-gradient(-45deg,#244F96,#3B6EC2,#6FA8FF,#244F96);
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
+color:white;padding:170px 0
+}
+
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+
+.hero h1{font-size:56px;margin-bottom:20px;line-height:1.2}
+
+.hero p{font-size:18px;margin-bottom:30px}
+
+.hero-img img{width:100%;border-radius:14px;box-shadow:0 25px 60px rgba(0,0,0,0.25);animation:float 5s ease-in-out infinite}
+
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-15px)}100%{transform:translateY(0)}}
+
+.btn{display:inline-block;background:white;color:var(--primary);padding:14px 30px;border-radius:8px;text-decoration:none;font-weight:600;transition:.3s}
+
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,0.2)}
+
+.section{padding:100px 0}
+
+.section h2{font-size:38px;color:var(--primary);margin-bottom:20px}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:40px}
+
+.card{background:white;padding:35px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.05);transition:.35s;text-align:center}
+
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,0.08)}
+
+.icon{font-size:42px;color:var(--primary);margin-bottom:15px;transition:.4s}
+
+.card:hover .icon{transform:scale(1.2) rotate(5deg);color:var(--secondary)}
+
+/* IMPACT */
+.impact{background:var(--primary);color:white;padding:100px 0}
+
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;text-align:center}
+
+.impact h3{font-size:48px}
+
+.impact-icon{font-size:36px;margin-bottom:10px;animation:iconFloat 4s ease-in-out infinite}
+
+@keyframes iconFloat{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+/* CTA */
+.cta{background:linear-gradient(120deg,#3B6EC2,#244F96);color:white;text-align:center;padding:120px 0}
+
+.cta h2{font-size:40px;margin-bottom:20px}
+
+footer{background:#1d3f73;color:white;padding:40px 0;text-align:center}
+
+/* SCROLL ANIMATION */
+.reveal{opacity:0;transform:translateY(40px);transition:1s}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+.hero-grid{grid-template-columns:1fr;text-align:center}
+nav ul{gap:15px}
+}
+
+
+/* HAMBURGER */
+.menu-toggle{
+display:none;
+font-size:24px;
+cursor:pointer;
+color:var(--primary);
+}
+
+/* MOBILE NAV */
+@media(max-width:900px){
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+right:20px;
 background:white;
-padding:40px;
+flex-direction:column;
+width:220px;
+padding:20px;
 border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
-margin-top:40px;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+display:none;
 }
 
-.featured h3{
-color:#244F96;
+nav ul.active{
+display:flex;
+}
+
+nav ul li{
 margin-bottom:10px;
 }
 
-.news-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-margin-top:40px;
 }
 
-.news-card{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
-}
-
-.news-card h4{
-color:#244F96;
-margin-bottom:10px;
-}
-
-.news-card p{
-font-size:15px;
-}
-
-.readmore{
-display:inline-block;
-margin-top:15px;
-color:#244F96;
-text-decoration:none;
-font-weight:600;
-}
-
-.readmore:hover{
-text-decoration:underline;
-}
 
 </style>
-
 </head>
 
 <body>
 
-
 <nav>
-
 <div class="container nav-container">
 
 <div class="logo">
-<img src="images/logo.png">
-Pinar Foundation
+<img src="https://res.cloudinary.com/djexglfns/image/upload/v1773474210/image_5_xisuga.jpg">Foundation
 </div>
 
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="programs.html">Programs</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="news.html">News</a></li>
-<li><a href="donate.html">Donate</a></li>
+<!-- HAMBURGER -->
+<div class="menu-toggle" onclick="toggleMenu()">
+<i class="fa-solid fa-bars"></i>
+</div>
+
+<ul id="nav-menu">
+<li><a href="index.html" data-en="Home" data-id="Beranda">Home</a></li>
+<li><a href="about.html" data-en="About" data-id="Tentang">About</a></li>
+<li><a href="programs.html" data-en="Programs" data-id="Program">Programs</a></li>
+<li><a href="research.html" data-en="Research" data-id="Riset">Research</a></li>
+<li><a href="news.html" data-en="News" data-id="Berita">News</a></li>
+<li><a href="donate.html" data-en="Donate" data-id="Donasi">Donate</a></li>
+<li><button class="lang-btn" onclick="toggleLanguage()">ID</button></li>
 </ul>
 
 </div>
-
 </nav>
 
+<!-- HERO NEWS -->
+<section class="hero">
+<div class="container hero-grid">
 
-<section class="news-hero">
+<div>
+<h1 data-en="News & Updates" data-id="Berita & Kegiatan">
+News & Updates
+</h1>
 
-<div class="container">
-
-<h1>News & Updates</h1>
-
-<p>
-Latest news, activities, and insights from Pinar Foundation.
+<p data-en="Stay informed about our latest programs, research, and community initiatives."
+data-id="Ikuti perkembangan terbaru program, riset, dan kegiatan komunitas kami.">
+Stay informed about our latest work.
 </p>
-
 </div>
 
+<div class="hero-img" style="display:flex;align-items:center;justify-content:center">
+<i class="fa-solid fa-newspaper" style="font-size:120px;opacity:0.2"></i>
+</div>
+
+</div>
 </section>
 
 
-<section class="section">
-
+<!-- FEATURED -->
+<section class="section reveal">
 <div class="container">
 
-<h2>Featured Story</h2>
+<h2 data-en="Featured Story" data-id="Sorotan Utama">
+Featured Story
+</h2>
 
-<div class="featured">
+<div class="card" style="text-align:left">
 
-<h3>Launching the Maternal Health Initiative</h3>
+<div class="icon-box">
+<i class="fa-solid fa-heart-pulse"></i>
+</div>
 
-<p>
-Pinar Foundation recently launched a new initiative aimed at improving maternal health services in underserved communities. The program focuses on community engagement, health education, and strengthening access to maternal care.
+<h3 data-en="Improving Maternal Health Through Community Engagement"
+data-id="Meningkatkan Kesehatan Ibu melalui Pemberdayaan Komunitas">
+Improving Maternal Health Through Community Engagement
+</h3>
+
+<p data-en="PINAR Foundation conducted a community-based initiative reaching over 500 mothers, improving awareness and access to maternal health services."
+data-id="PINAR Foundation melaksanakan program komunitas yang menjangkau lebih dari 500 ibu, meningkatkan kesadaran dan akses layanan kesehatan ibu.">
+Community-based initiative reaching over 500 mothers.
 </p>
 
 <br>
 
-<p>
-Through collaboration with local partners and health providers, the initiative aims to support safer pregnancies and healthier outcomes for mothers and children.
-</p>
+<a href="#" class="btn"
+data-en="Read More"
+data-id="Baca Selengkapnya">
+Read More
+</a>
 
 </div>
 
 </div>
-
 </section>
 
 
-<section class="section">
-
+<!-- NEWS LIST -->
+<section class="section reveal">
 <div class="container">
 
-<h2>Latest Updates</h2>
+<h2 data-en="Latest News" data-id="Berita Terbaru">
+Latest News
+</h2>
 
-<div class="news-grid">
+<div class="grid">
 
-<div class="news-card">
+<!-- ITEM -->
+<div class="card">
+<div class="icon-box">
+<i class="fa-solid fa-apple-whole"></i>
+</div>
 
-<h4>Community Nutrition Workshop</h4>
+<h3 data-en="Nutrition Education for Early Childhood"
+data-id="Edukasi Gizi untuk Anak Usia Dini">
+Nutrition Education
+</h3>
 
-<p>
-Training community health workers to support child nutrition and growth monitoring in rural areas.
+<p data-en="A community-based nutrition program to prevent stunting and improve child growth."
+data-id="Program edukasi gizi untuk mencegah stunting dan meningkatkan pertumbuhan anak.">
+Community nutrition program.
 </p>
 
-<a class="readmore" href="#">Read More</a>
-
+<a href="#" style="color:var(--primary);font-weight:500"
+data-en="Read More →"
+data-id="Baca Selengkapnya →">
+Read More →
+</a>
 </div>
 
+<!-- ITEM -->
+<div class="card">
+<div class="icon-box">
+<i class="fa-solid fa-hospital"></i>
+</div>
 
-<div class="news-card">
+<h3 data-en="Strengthening Local Health Systems"
+data-id="Penguatan Sistem Kesehatan Lokal">
+Health Systems Strengthening
+</h3>
 
-<h4>Research on Child Nutrition</h4>
-
-<p>
-New research exploring child nutrition challenges and strategies for stunting prevention.
+<p data-en="Collaboration with local providers to improve service quality and access."
+data-id="Kolaborasi dengan tenaga kesehatan untuk meningkatkan kualitas layanan.">
+Improving health services.
 </p>
 
-<a class="readmore" href="#">Read More</a>
-
+<a href="#" style="color:var(--primary);font-weight:500">
+Read More →
+</a>
 </div>
 
+<!-- ITEM -->
+<div class="card">
+<div class="icon-box">
+<i class="fa-solid fa-chart-line"></i>
+</div>
 
-<div class="news-card">
+<h3 data-en="New Research on Maternal Health"
+data-id="Riset Terbaru Kesehatan Ibu">
+Research Publication
+</h3>
 
-<h4>Policy Dialogue on Maternal Health</h4>
-
-<p>
-Pinar Foundation engaged policymakers and stakeholders to discuss strategies for improving maternal health services.
+<p data-en="Latest findings contribute to strengthening maternal health policies."
+data-id="Temuan terbaru mendukung kebijakan kesehatan ibu berbasis bukti.">
+Research findings released.
 </p>
 
-<a class="readmore" href="#">Read More</a>
-
-</div>
-
-
-<div class="news-card">
-
-<h4>Community Health Outreach</h4>
-
-<p>
-Our outreach program continues to expand access to maternal and child health information.
-</p>
-
-<a class="readmore" href="#">Read More</a>
-
-</div>
-
-
-<div class="news-card">
-
-<h4>Nutrition Awareness Campaign</h4>
-
-<p>
-A campaign promoting healthy nutrition practices for mothers and young children.
-</p>
-
-<a class="readmore" href="#">Read More</a>
-
-</div>
-
-
-<div class="news-card">
-
-<h4>Research Collaboration</h4>
-
-<p>
-Pinar Foundation collaborates with academic partners to produce evidence for health policy.
-</p>
-
-<a class="readmore" href="#">Read More</a>
-
-</div>
-
-
+<a href="#" style="color:var(--primary);font-weight:500">
+Read More →
+</a>
 </div>
 
 </div>
 
+</div>
 </section>
 
 
+<!-- TOPICS -->
+<section class="section reveal" style="padding-top:0">
+<div class="container">
+
+<h2 data-en="Topics" data-id="Topik Berita">
+Topics
+</h2>
+
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px">
+
+<span class="btn" style="background:#eef3ff">Maternal Health</span>
+<span class="btn" style="background:#eef3ff">Nutrition</span>
+<span class="btn" style="background:#eef3ff">Research</span>
+<span class="btn" style="background:#eef3ff">Policy</span>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- CTA -->
 <section class="cta">
-
 <div class="container">
 
-<h2>Stay Connected</h2>
+<h2 data-en="Stay Connected" data-id="Tetap Terhubung">
+Stay Connected
+</h2>
 
-<p>
-Follow our work and join efforts to improve maternal and child health.
+<p data-en="Follow our latest updates and activities."
+data-id="Ikuti perkembangan dan kegiatan terbaru kami.">
+Follow our updates.
 </p>
 
 <br>
 
-<a class="btn" href="donate.html">Support Our Mission</a>
+<a class="btn" href="#"
+data-en="Subscribe"
+data-id="Berlangganan">
+Subscribe
+</a>
 
 </div>
-
 </section>
-
 
 <footer>
-
 <p>© 2026 Pinar Foundation</p>
-
-<p>Advancing Maternal and Child Health</p>
-
 </footer>
 
-</body>
+<script>
 
+/* LANGUAGE SWITCH */
+let currentLang = localStorage.getItem("lang") || "en";
+
+function setLanguage(lang){
+
+document.querySelectorAll("[data-en]").forEach(el=>{
+el.innerText = el.dataset[lang];
+});
+
+localStorage.setItem("lang",lang);
+
+document.querySelector(".lang-btn").innerText = lang === "en" ? "ID" : "EN";
+
+currentLang = lang;
+
+}
+
+function toggleLanguage(){
+setLanguage(currentLang === "en" ? "id" : "en");
+}
+
+setLanguage(currentLang);
+
+/* COUNTER */
+const counters=document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+counter.innerText='0';
+
+const updateCounter=()=>{
+
+const target=+counter.getAttribute('data-target');
+const c=+counter.innerText;
+
+const increment=target/200;
+
+if(c<target){
+
+counter.innerText=Math.ceil(c+increment);
+setTimeout(updateCounter,10);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+};
+
+updateCounter();
+
+});
+
+/* SCROLL REVEAL */
+function reveal(){
+
+var reveals=document.querySelectorAll(".reveal");
+
+for(var i=0;i<reveals.length;i++){
+
+var windowHeight=window.innerHeight;
+var elementTop=reveals[i].getBoundingClientRect().top;
+var elementVisible=120;
+
+if(elementTop<windowHeight-elementVisible){
+reveals[i].classList.add("active");
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
+
+
+function toggleMenu(){
+document.getElementById("nav-menu").classList.toggle("active");
+} 
+
+
+</script>
+
+</body>
 </html>
