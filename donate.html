@@ -1,255 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Donate – Pinar Foundation</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Pinar Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-.donate-hero{
-background:linear-gradient(120deg,#244F96,#3B6EC2);
-color:white;
-padding:100px 0;
-text-align:center;
+:root{
+--primary:#244F96;
+--secondary:#3B6EC2;
+--accent:#6FA8FF;
+--light:#F5F7FB;
+--dark:#1f2937;
 }
 
-.donate-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-margin-top:40px;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+
+body{background:var(--light);color:var(--dark);line-height:1.7;overflow-x:hidden}
+
+.container{width:90%;max-width:1200px;margin:auto}
+
+/* NAVBAR */
+nav{background:white;box-shadow:0 5px 20px rgba(0,0,0,0.05);position:sticky;top:0;z-index:100}
+
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary);font-size:20px}
+
+.logo img{height:40px}
+
+nav ul{display:flex;gap:30px;list-style:none;align-items:center}
+
+nav a{text-decoration:none;color:var(--dark);font-weight:500;transition:.3s}
+
+nav a:hover{color:var(--primary)}
+
+.lang-btn{border:1px solid var(--primary);padding:6px 12px;border-radius:6px;cursor:pointer;color:var(--primary);font-weight:500}
+
+/* HERO */
+.hero{
+background:linear-gradient(-45deg,#244F96,#3B6EC2,#6FA8FF,#244F96);
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
+color:white;padding:170px 0
 }
 
-.donate-card{
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+
+.hero h1{font-size:56px;margin-bottom:20px;line-height:1.2}
+
+.hero p{font-size:18px;margin-bottom:30px}
+
+.hero-img img{width:100%;border-radius:14px;box-shadow:0 25px 60px rgba(0,0,0,0.25);animation:float 5s ease-in-out infinite}
+
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-15px)}100%{transform:translateY(0)}}
+
+.btn{display:inline-block;background:white;color:var(--primary);padding:14px 30px;border-radius:8px;text-decoration:none;font-weight:600;transition:.3s}
+
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,0.2)}
+
+.section{padding:100px 0}
+
+.section h2{font-size:38px;color:var(--primary);margin-bottom:20px}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:40px}
+
+.card{background:white;padding:35px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.05);transition:.35s;text-align:center}
+
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,0.08)}
+
+.icon{font-size:42px;color:var(--primary);margin-bottom:15px;transition:.4s}
+
+.card:hover .icon{transform:scale(1.2) rotate(5deg);color:var(--secondary)}
+
+/* IMPACT */
+.impact{background:var(--primary);color:white;padding:100px 0}
+
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;text-align:center}
+
+.impact h3{font-size:48px}
+
+.impact-icon{font-size:36px;margin-bottom:10px;animation:iconFloat 4s ease-in-out infinite}
+
+@keyframes iconFloat{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+/* CTA */
+.cta{background:linear-gradient(120deg,#3B6EC2,#244F96);color:white;text-align:center;padding:120px 0}
+
+.cta h2{font-size:40px;margin-bottom:20px}
+
+footer{background:#1d3f73;color:white;padding:40px 0;text-align:center}
+
+/* SCROLL ANIMATION */
+.reveal{opacity:0;transform:translateY(40px);transition:1s}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+.hero-grid{grid-template-columns:1fr;text-align:center}
+nav ul{gap:15px}
+}
+
+
+/* HAMBURGER */
+.menu-toggle{
+display:none;
+font-size:24px;
+cursor:pointer;
+color:var(--primary);
+}
+
+/* MOBILE NAV */
+@media(max-width:900px){
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+right:20px;
 background:white;
-padding:35px;
+flex-direction:column;
+width:220px;
+padding:20px;
 border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
-text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+display:none;
 }
 
-.donate-card h3{
-color:#244F96;
+nav ul.active{
+display:flex;
+}
+
+nav ul li{
 margin-bottom:10px;
 }
 
-.amounts{
-margin-top:20px;
 }
 
-.amounts button{
-margin:5px;
-padding:10px 20px;
-border:none;
-background:#244F96;
-color:white;
-border-radius:5px;
-cursor:pointer;
-}
-
-.amounts button:hover{
-background:#1d3f73;
-}
-
-.bank-box{
-background:white;
-padding:40px;
-border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
-margin-top:40px;
-}
-
-.bank-box h3{
-color:#244F96;
-margin-bottom:15px;
-}
 
 </style>
-
 </head>
 
 <body>
 
-
 <nav>
-
 <div class="container nav-container">
 
 <div class="logo">
-<img src="images/logo.png">
-Pinar Foundation
+<img src="https://res.cloudinary.com/djexglfns/image/upload/v1773474210/image_5_xisuga.jpg">Foundation
 </div>
 
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="programs.html">Programs</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="news.html">News</a></li>
-<li><a href="donate.html">Donate</a></li>
+<!-- HAMBURGER -->
+<div class="menu-toggle" onclick="toggleMenu()">
+<i class="fa-solid fa-bars"></i>
+</div>
+
+<ul id="nav-menu">
+<li><a href="index.html" data-en="Home" data-id="Beranda">Home</a></li>
+<li><a href="about.html" data-en="About" data-id="Tentang">About</a></li>
+<li><a href="programs.html" data-en="Programs" data-id="Program">Programs</a></li>
+<li><a href="research.html" data-en="Research" data-id="Riset">Research</a></li>
+<li><a href="news.html" data-en="News" data-id="Berita">News</a></li>
+<li><a href="donate.html" data-en="Donate" data-id="Donasi">Donate</a></li>
+<li><button class="lang-btn" onclick="toggleLanguage()">ID</button></li>
 </ul>
 
 </div>
-
 </nav>
 
+<!-- HERO DONATE -->
+<section class="hero">
+<div class="container hero-grid">
 
-<section class="donate-hero">
+<div>
+<h1 data-en="Support Sustainable Impact" data-id="Dukung Dampak Berkelanjutan">
+Support Sustainable Impact
+</h1>
 
-<div class="container">
-
-<h1>Support Our Work</h1>
-
-<p>
-Your support helps expand programs that improve maternal and child health.
+<p data-en="Your contribution enables Pinar Foundation to strengthen maternal and child health through evidence-based programs, research, and community engagement."
+data-id="Kontribusi Anda memungkinkan Pinar Foundation memperkuat kesehatan ibu dan anak melalui program berbasis bukti, riset, dan pemberdayaan masyarakat.">
+Your contribution enables sustainable health impact.
 </p>
 
+<a href="https://mayar.to/primajana" target="_blank" class="btn"
+data-en="Donate Securely"
+data-id="Donasi Sekarang">
+Donate Securely
+</a>
 </div>
 
+<div class="hero-img">
+<img src="https://res.cloudinary.com/djexglfns/image/upload/q_auto/f_auto/v1775225084/senyum1_tdces0.jpg" alt="Smiling child">
+</div>
+
+</div>
 </section>
 
 
-<section class="section">
-
+<!-- WHY DONATE -->
+<section class="section reveal">
 <div class="container">
 
-<h2>Why Your Support Matters</h2>
+<h2 data-en="Why Your Contribution Matters" data-id="Mengapa Kontribusi Anda Penting">
+Why Your Contribution Matters
+</h2>
 
-<p>
-Millions of mothers and children still face barriers to accessing quality health services and nutrition. Your contribution enables Pinar Foundation to expand research, strengthen communities, and advocate for better health policies.
+<div class="grid">
+
+<div class="card">
+<div class="icon"><i class="fa-solid fa-heart"></i></div>
+<h3 data-en="Strengthening Health Systems" data-id="Penguatan Sistem Kesehatan">
+Strengthening Health Systems
+</h3>
+<p data-en="Your support helps improve access to quality maternal and child health services."
+data-id="Dukungan Anda membantu meningkatkan akses terhadap layanan kesehatan ibu dan anak yang berkualitas.">
+Improving access to care.
 </p>
+</div>
+
+<div class="card">
+<div class="icon"><i class="fa-solid fa-people-group"></i></div>
+<h3 data-en="Community-Based Programs" data-id="Program Berbasis Komunitas">
+Community-Based Programs
+</h3>
+<p data-en="We work directly with communities to ensure sustainable and context-specific solutions."
+data-id="Kami bekerja langsung dengan masyarakat untuk memastikan solusi yang berkelanjutan dan sesuai konteks lokal.">
+Community-driven solutions.
+</p>
+</div>
+
+<div class="card">
+<div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+<h3 data-en="Evidence-Based Approach" data-id="Pendekatan Berbasis Bukti">
+Evidence-Based Approach
+</h3>
+<p data-en="All interventions are designed using research and data to maximize impact."
+data-id="Semua intervensi dirancang berdasarkan riset dan data untuk memaksimalkan dampak.">
+Research-driven impact.
+</p>
+</div>
 
 </div>
 
+</div>
 </section>
 
 
-<section class="section">
+<!-- PROGRAM IMPACT VISUAL -->
+<section class="section reveal">
+<div class="container hero-grid">
 
-<div class="container">
-
-<h2>Ways to Support</h2>
-
-<div class="donate-grid">
-
-<div class="donate-card">
-
-<h3>One-Time Donation</h3>
-
-<p>
-Make a one-time contribution to support maternal and child health programs.
-</p>
-
-<div class="amounts">
-
-<button>$25</button>
-<button>$50</button>
-<button>$100</button>
-
+<div class="hero-img">
+<img src="https://res.cloudinary.com/djexglfns/image/upload/q_auto/f_auto/v1775225198/171349_senyum_p0awy6.jpg" alt="Maternal and child health program">
 </div>
 
-</div>
+<div>
+<h2 data-en="From Contribution to Impact" data-id="Dari Kontribusi Menjadi Dampak">
+From Contribution to Impact
+</h2>
 
-
-<div class="donate-card">
-
-<h3>Monthly Support</h3>
-
-<p>
-Become a monthly supporter and help sustain long-term programs.
-</p>
-
-<div class="amounts">
-
-<button>$10/month</button>
-<button>$25/month</button>
-<button>$50/month</button>
-
-</div>
-
-</div>
-
-
-<div class="donate-card">
-
-<h3>Partnership</h3>
-
-<p>
-Organizations and institutions can partner with us to expand program impact.
-</p>
-
-<a class="btn" href="mailto:info@pinarfoundation.org">Contact Us</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="container">
-
-<div class="bank-box">
-
-<h3>Bank Transfer</h3>
-
-<p>
-If you prefer to support through bank transfer, please use the following details:
+<p data-en="Every contribution supports real activities on the ground, from maternal health education and nutrition programs to strengthening local health systems and research initiatives."
+data-id="Setiap kontribusi mendukung kegiatan nyata di lapangan, mulai dari edukasi kesehatan ibu, program nutrisi anak, hingga penguatan sistem kesehatan dan riset.">
+Every contribution supports real activities on the ground.
 </p>
 
 <br>
 
-<p><b>Bank Name:</b> [Your Bank]</p>
-<p><b>Account Name:</b> Pinar Foundation</p>
-<p><b>Account Number:</b> XXXXXXXX</p>
-<p><b>SWIFT Code:</b> XXXXX</p>
+<a href="https://mayar.to/primajana" target="_blank" class="btn"
+data-en="Support This Work"
+data-id="Dukung Program Ini">
+Support This Work
+</a>
 
 </div>
 
 </div>
-
 </section>
 
 
+<!-- FUND MANAGEMENT -->
+<section class="section reveal">
+<div class="container">
+
+<h2 data-en="Transparent Fund Management" data-id="Pengelolaan Dana yang Transparan">
+Transparent Fund Management
+</h2>
+
+<p style="max-width:800px;margin-top:20px"
+data-en="Pinar Foundation ensures that all funds are managed transparently and responsibly. Contributions are allocated to program implementation, research, and community engagement with measurable outcomes."
+data-id="Pinar Foundation memastikan seluruh dana dikelola secara transparan dan bertanggung jawab. Kontribusi dialokasikan untuk implementasi program, riset, dan pemberdayaan masyarakat dengan dampak yang terukur.">
+Transparent and accountable fund management.
+</p>
+
+<br>
+
+<a href="https://mayar.to/primajana" target="_blank" class="btn"
+data-en="Click to Donate"
+data-id="Klik untuk Donasi">
+Click to Donate
+</a>
+
+</div>
+</section>
+
+
+<!-- CTA -->
 <section class="cta">
-
 <div class="container">
 
-<h2>Together We Can Improve Maternal and Child Health</h2>
+<h2 data-en="Be Part of the Impact" data-id="Jadilah Bagian dari Perubahan">
+Be Part of the Impact
+</h2>
 
-<p>
-Every contribution helps expand access to health services, research, and community programs.
+<p data-en="Your support creates meaningful change for mothers and children."
+data-id="Dukungan Anda menciptakan perubahan nyata bagi ibu dan anak.">
+Your support creates meaningful change.
 </p>
 
 <br>
 
-<a class="btn" href="#">Donate Now</a>
+<a href="https://mayar.to/primajana" target="_blank" class="btn"
+data-en="Donate Now"
+data-id="Donasi Sekarang">
+Donate Now
+</a>
 
 </div>
-
 </section>
-
 
 <footer>
-
 <p>© 2026 Pinar Foundation</p>
-
-<p>Advancing Maternal and Child Health</p>
-
 </footer>
 
-</body>
+<script>
 
+/* LANGUAGE SWITCH */
+let currentLang = localStorage.getItem("lang") || "en";
+
+function setLanguage(lang){
+
+document.querySelectorAll("[data-en]").forEach(el=>{
+el.innerText = el.dataset[lang];
+});
+
+localStorage.setItem("lang",lang);
+
+document.querySelector(".lang-btn").innerText = lang === "en" ? "ID" : "EN";
+
+currentLang = lang;
+
+}
+
+function toggleLanguage(){
+setLanguage(currentLang === "en" ? "id" : "en");
+}
+
+setLanguage(currentLang);
+
+/* COUNTER */
+const counters=document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+counter.innerText='0';
+
+const updateCounter=()=>{
+
+const target=+counter.getAttribute('data-target');
+const c=+counter.innerText;
+
+const increment=target/200;
+
+if(c<target){
+
+counter.innerText=Math.ceil(c+increment);
+setTimeout(updateCounter,10);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+};
+
+updateCounter();
+
+});
+
+/* SCROLL REVEAL */
+function reveal(){
+
+var reveals=document.querySelectorAll(".reveal");
+
+for(var i=0;i<reveals.length;i++){
+
+var windowHeight=window.innerHeight;
+var elementTop=reveals[i].getBoundingClientRect().top;
+var elementVisible=120;
+
+if(elementTop<windowHeight-elementVisible){
+reveals[i].classList.add("active");
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
+
+
+function toggleMenu(){
+document.getElementById("nav-menu").classList.toggle("active");
+} 
+
+
+</script>
+
+</body>
 </html>
