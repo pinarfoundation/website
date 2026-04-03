@@ -106,6 +106,46 @@ footer{background:#1d3f73;color:white;padding:40px 0;text-align:center}
 nav ul{gap:15px}
 }
 
+
+/* HAMBURGER */
+.menu-toggle{
+display:none;
+font-size:24px;
+cursor:pointer;
+color:var(--primary);
+}
+
+/* MOBILE NAV */
+@media(max-width:900px){
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+right:20px;
+background:white;
+flex-direction:column;
+width:220px;
+padding:20px;
+border-radius:10px;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+
+nav ul li{
+margin-bottom:10px;
+}
+
+}
+
+
 </style>
 </head>
 
@@ -118,7 +158,12 @@ nav ul{gap:15px}
 <img src="https://res.cloudinary.com/djexglfns/image/upload/v1773474210/image_5_xisuga.jpg">Foundation
 </div>
 
-<ul>
+<!-- HAMBURGER -->
+<div class="menu-toggle" onclick="toggleMenu()">
+<i class="fa-solid fa-bars"></i>
+</div>
+
+<ul id="nav-menu">
 <li><a href="index.html" data-en="Home" data-id="Beranda">Home</a></li>
 <li><a href="about.html" data-en="About" data-id="Tentang">About</a></li>
 <li><a href="programs.html" data-en="Programs" data-id="Program">Programs</a></li>
@@ -356,6 +401,12 @@ reveals[i].classList.add("active");
 }
 
 window.addEventListener("scroll",reveal);
+
+
+function toggleMenu(){
+document.getElementById("nav-menu").classList.toggle("active");
+} 
+
 
 </script>
 
