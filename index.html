@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinar Foundation — Pencegahan Masalah Kesehatan</title>
+<meta name="description" content="Pinar Foundation adalah yayasan yang berfokus pada pencegahan masalah kesehatan masyarakat melalui penelitian, edukasi, konseling, dan pemberdayaan komunitas.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a3fa8'/%3E%3Ctext x='50' y='69' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#1a3fa8;
+    --primary-dark:#122c7d;
+    --primary-darker:#0b1c54;
+    --primary-light:#eaf0fd;
+    --accent:#2f5cdb;
+    --text-dark:#16213e;
+    --text-muted:#5b6479;
+    --white:#ffffff;
+    --gray-bg:#f5f7fc;
+    --border:#e3e7f3;
+    --radius:14px;
+    --shadow:0 14px 34px rgba(15,30,90,0.10);
+    --shadow-sm:0 6px 18px rgba(15,30,90,0.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--text-dark);line-height:1.6;background:var(--white);overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.25;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .skip-link{position:absolute;left:-999px;top:0;background:var(--primary);color:#fff;padding:10px 16px;z-index:2000;border-radius:0 0 8px 0;}
+  .skip-link:focus{left:0;}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;border:2px solid transparent;transition:all .2s ease;white-space:nowrap;}
+  .btn-primary{background:var(--white);color:var(--primary);}
+  .btn-primary:hover{background:var(--primary-light);transform:translateY(-2px);}
+  .btn-outline{background:transparent;border-color:rgba(255,255,255,0.55);color:var(--white);}
+  .btn-outline:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px);}
+  .btn-solid{background:var(--primary);color:var(--white);}
+  .btn-solid:hover{background:var(--primary-dark);transform:translateY(-2px);}
+  .btn-ghost-blue{background:var(--primary-light);color:var(--primary);}
+  .btn-ghost-blue:hover{background:#dde6fb;}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--border);transition:box-shadow .25s ease;}
+  header.scrolled{box-shadow:0 6px 20px rgba(15,30,90,0.08);}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1200px;margin:0 auto;gap:16px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;}
+  .logo-mark{width:42px;height:42px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;letter-spacing:.5px;position:relative;flex-shrink:0;}
+  .logo-mark::after{content:'✦';position:absolute;top:-7px;right:-5px;font-size:12px;color:#ffd24a;}
+  .logo-text{font-weight:800;font-size:20px;color:var(--primary-darker);letter-spacing:.3px;}
+  nav.nav-links{display:flex;align-items:center;gap:30px;}
+  nav.nav-links a{font-weight:500;font-size:15px;color:var(--text-dark);position:relative;padding:6px 0;}
+  nav.nav-links a.active,nav.nav-links a:hover{color:var(--primary);}
+  nav.nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--primary);border-radius:2px;}
+  .nav-actions{display:flex;align-items:center;gap:12px;}
+  .lang-toggle{display:flex;align-items:center;border:1px solid var(--border);border-radius:999px;overflow:hidden;font-size:13px;font-weight:700;}
+  .lang-toggle button{padding:7px 13px;background:var(--white);color:var(--text-muted);border:none;cursor:pointer;font-weight:700;font-family:'Inter',sans-serif;font-size:13px;}
+  .lang-toggle button.active{background:var(--primary);color:#fff;}
+  .nav-btn-outline{padding:9px 18px;border-radius:999px;border:2px solid var(--primary);color:var(--primary);font-weight:600;font-size:14px;}
+  .nav-btn-outline:hover{background:var(--primary-light);}
+  .nav-btn-solid{padding:9px 18px;border-radius:999px;background:var(--primary);color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;}
+  .nav-btn-solid:hover{background:var(--primary-dark);}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .hamburger span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;}
+
+  /* Hero */
+  .hero{position:relative;background:linear-gradient(135deg,var(--primary-darker) 0%,var(--primary) 55%,var(--accent) 100%);overflow:hidden;padding:90px 0 130px;}
+  .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,0.06);}
+  .hero::before{width:420px;height:420px;top:-160px;right:-100px;}
+  .hero::after{width:280px;height:280px;bottom:-120px;right:220px;background:rgba(255,255,255,0.05);}
+  .hero-dots{position:absolute;left:0;top:0;bottom:0;width:220px;background-image:radial-gradient(rgba(255,255,255,0.18) 1.5px,transparent 1.5px);background-size:18px 18px;opacity:.5;pointer-events:none;}
+  .hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:0 24px;color:#fff;max-width:680px;}
+  .hero-badge{display:inline-block;padding:7px 16px;border-radius:999px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.25);font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:22px;}
+  .hero h1{font-size:52px;font-weight:800;margin-bottom:10px;}
+  .hero h2{font-size:26px;font-weight:600;color:#dfe7ff;margin-bottom:20px;}
+  .hero p{font-size:16.5px;color:rgba(255,255,255,0.85);max-width:560px;margin-bottom:32px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+
+  .stats-bar{position:relative;max-width:1080px;margin:-70px auto 0;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(4,1fr);z-index:5;}
+  .stat-item{text-align:center;padding:30px 16px;border-right:1px solid var(--border);}
+  .stat-item:last-child{border-right:none;}
+  .stat-num{font-family:'Poppins',sans-serif;font-size:32px;font-weight:800;color:var(--primary);}
+  .stat-label{font-size:13.5px;color:var(--text-muted);margin-top:4px;font-weight:500;}
+
+  section{padding:110px 0 70px;}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--primary);background:var(--primary-light);padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+  .section-head{max-width:640px;margin:0 auto 50px;text-align:center;}
+  .section-head h2{font-size:34px;font-weight:800;color:var(--text-dark);margin-bottom:12px;}
+  .section-head p{color:var(--text-muted);font-size:16px;}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-text .eyebrow{margin-bottom:14px;}
+  .about-text h2{font-size:32px;font-weight:800;margin-bottom:18px;}
+  .about-text p{color:var(--text-muted);margin-bottom:16px;font-size:15.5px;}
+  .about-visual{background:linear-gradient(135deg,var(--primary-light),#dce6fb);border-radius:var(--radius);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:700;font-size:15px;border:1px dashed var(--primary);}
+
+  /* Programs */
+  .programs{background:var(--gray-bg);}
+  .program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+  .program-card{background:#fff;border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow-sm);position:relative;transition:transform .2s ease,box-shadow .2s ease;border:1px solid var(--border);}
+  .program-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+  .program-icon-wrap{position:relative;width:58px;height:58px;margin-bottom:18px;}
+  .program-icon{width:58px;height:58px;border-radius:16px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;}
+  .program-icon svg{width:28px;height:28px;}
+  .program-num{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .program-card h3{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--text-dark);}
+  .program-card p{font-size:14.5px;color:var(--text-muted);margin-bottom:18px;}
+  .card-link{font-size:14px;font-weight:700;color:var(--primary);display:inline-flex;align-items:center;gap:6px;}
+  .card-link svg{width:15px;height:15px;transition:transform .2s ease;}
+  .card-link:hover svg{transform:translateX(3px);}
+
+  /* Laporan & Donasi CTA cards */
+  .cta-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;}
+  .cta-card{border-radius:var(--radius);padding:36px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#fff;box-shadow:var(--shadow-sm);}
+  .cta-card.report{background:linear-gradient(135deg,var(--primary-darker),var(--primary));}
+  .cta-card.donate{background:linear-gradient(135deg,var(--accent),#4f7bff);}
+  .cta-card-icon{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cta-card-icon svg{width:26px;height:26px;}
+  .cta-card h3{font-size:20px;font-weight:700;margin-bottom:6px;}
+  .cta-card p{font-size:14px;color:rgba(255,255,255,0.85);}
+  .cta-card-arrow{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cta-card-arrow svg{width:18px;height:18px;}
+
+  /* News */
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+  .news-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow .2s ease,transform .2s ease;}
+  .news-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-4px);}
+  .news-thumb{aspect-ratio:16/10;background:linear-gradient(135deg,var(--primary-light),#dce6fb);display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:600;font-size:13px;}
+  .news-body{padding:22px;}
+  .news-date{font-size:12.5px;color:var(--primary);font-weight:700;letter-spacing:.5px;margin-bottom:8px;}
+  .news-body h3{font-size:16.5px;font-weight:700;margin-bottom:8px;}
+  .news-body p{font-size:14px;color:var(--text-muted);margin-bottom:14px;}
+
+  /* Final CTA banner */
+  .final-cta{background:linear-gradient(135deg,var(--primary-darker),var(--primary) 70%);border-radius:24px;margin:0 24px;padding:64px 40px;text-align:center;color:#fff;max-width:1152px;margin-left:auto;margin-right:auto;}
+  .final-cta h2{font-size:32px;font-weight:800;margin-bottom:14px;}
+  .final-cta p{color:rgba(255,255,255,0.85);max-width:520px;margin:0 auto 28px;}
+
+  /* Footer */
+  footer{background:var(--primary-darker);color:rgba(255,255,255,0.75);padding:80px 0 0;margin-top:70px;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1.3fr 1.2fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-brand .logo-text{color:#fff;}
+  .footer-brand p{margin:16px 0 20px;font-size:14px;line-height:1.7;color:rgba(255,255,255,0.6);}
+  .social-row{display:flex;gap:10px;}
+  .social-row a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;color:#fff;}
+  .social-row a:hover{background:var(--accent);}
+  footer h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:20px;}
+  footer .footer-col ul li{margin-bottom:12px;}
+  footer .footer-col ul li a{font-size:14px;color:rgba(255,255,255,0.65);}
+  footer .footer-col ul li a:hover{color:#fff;}
+  .contact-item{display:flex;gap:10px;margin-bottom:14px;font-size:14px;color:rgba(255,255,255,0.65);}
+  .contact-item svg{width:18px;height:18px;flex-shrink:0;margin-top:1px;color:var(--accent);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-size:13px;color:rgba(255,255,255,0.5);flex-wrap:wrap;gap:10px;}
+  .footer-bottom .legal-links{display:flex;gap:20px;}
+  .footer-bottom .legal-links a{color:rgba(255,255,255,0.5);}
+  .footer-bottom .legal-links a:hover{color:#fff;}
+
+  @media (max-width:900px){
+    nav.nav-links{display:none;}
+    .hamburger{display:flex;}
+    .nav-actions .nav-btn-outline{display:none;}
+    .about-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .cta-cards{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .hero h1{font-size:36px;}
+    .hero h2{font-size:20px;}
+    .stats-bar{grid-template-columns:repeat(2,1fr);}
+    .stat-item{border-bottom:1px solid var(--border);}
+    section{padding:70px 0 50px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column;text-align:center;}
+    .final-cta{margin:0 16px;padding:44px 24px;}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Lewati ke konten</a>
+
+<header id="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">P</span>
+      <span class="logo-text">PINAR</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="active" data-i18n="nav_home">Beranda</a>
+      <a href="tentang-pinar.html" data-i18n="nav_about">Tentang Pinar</a>
+      <a href="kontak.html" data-i18n="nav_contact">Kontak Pinar</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-toggle">
+        <button type="button" data-lang-btn="id" class="active">ID</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+      <a href="laporan.html" class="nav-btn-outline" data-i18n="nav_report">Laporan Pinar</a>
+      <a href="donasi.html" class="nav-btn-solid" data-i18n="nav_donate">Donasi</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:90px;">
+    <div class="hero-dots"></div>
+    <div class="hero-inner">
+      <span class="hero-badge" data-i18n="hero_badge">YAYASAN PINAR</span>
+      <h1>Pinar Foundation</h1>
+      <h2 data-i18n="hero_subtitle">Pencegahan Masalah Kesehatan</h2>
+      <p data-i18n="hero_desc">Kami hadir untuk mencegah masalah kesehatan masyarakat melalui penelitian, edukasi, konseling, dan pemberdayaan komunitas di seluruh Indonesia.</p>
+      <div class="hero-actions">
+        <a href="tentang-pinar.html" class="btn btn-primary" data-i18n="hero_cta_primary">Info Selengkapnya</a>
+        <a href="donasi.html" class="btn btn-outline" data-i18n="hero_cta_secondary">Donasi Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num">10.000+</div>
+        <div class="stat-label" data-i18n="stat1_label">Penerima Manfaat</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7</div>
+        <div class="stat-label" data-i18n="stat2_label">Program Aktif</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20+</div>
+        <div class="stat-label" data-i18n="stat3_label">Kota Terjangkau</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label" data-i18n="stat4_label">Tahun Berdampak</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <span class="eyebrow" data-i18n="about_eyebrow">TENTANG KAMI</span>
+        <h2 data-i18n="about_title">Mengenal Pinar Foundation</h2>
+        <p data-i18n="about_p1">Pinar Foundation adalah yayasan yang berfokus pada pencegahan masalah kesehatan masyarakat melalui pendekatan berbasis penelitian, edukasi, dan pemberdayaan komunitas.</p>
+        <p data-i18n="about_p2">Kami percaya bahwa pencegahan adalah langkah paling efektif untuk menciptakan masyarakat yang lebih sehat dan berdaya, dan kami bekerja sama dengan mitra lokal maupun nasional untuk mewujudkannya.</p>
+        <a href="tentang-pinar.html" class="btn btn-solid" data-i18n="about_link">Selengkapnya Tentang Kami</a>
+      </div>
+      <div class="about-visual" data-i18n="about_visual_label">Foto / Ilustrasi Kegiatan</div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="programs_eyebrow">APA YANG KAMI LAKUKAN</span>
+        <h2 data-i18n="programs_title">Program &amp; Layanan Kami</h2>
+        <p data-i18n="programs_subtitle">Tujuh pilar utama yang menjadi fondasi kerja Pinar Foundation dalam mencegah masalah kesehatan masyarakat.</p>
+      </div>
+
+      <div class="program-grid">
+
+        <div class="program-card">
+          <div class="program-icon-wrap">
+            <div class="program-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6h8M22 6v10l-9 20a3 3 0 0 0 2.8 4h16.4a3 3 0 0 0 2.8-4l-9-20V6"/><circle cx="28" cy="30" r="1.6" fill="currentColor" stroke="none"/><circle cx="22" cy="34" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+            <span class="program-num">1</span>
+          </div>
+          <h3 data-i18n="prog1_title">Pusat Penelitian dan Inovasi</h3>
+          <p data-i18n="prog1_desc">Riset berbasis bukti untuk mendukung kebijakan dan intervensi kesehatan masyarakat.</p>
+          <a href="program/penelitian-inovasi.html" class="card-link"><span data-i18n="card_link">Lihat Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon-wrap">
+            <div class="program-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="36" height="24" rx="8"/><path d="M16 32l-4 8 10-8"/><circle cx="16" cy="20" r="1.6" fill="currentColor" stroke="none"/><circle cx="24" cy="20" r="1.6" fill="currentColor" stroke="none"/><circle cx="32" cy="20" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+            <span class="program-num">2</span>
+          </div>
+          <h3 data-i18n="prog2_title">Konseling</h3>
+          <p data-i18n="prog2_desc">Layanan konseling profesional untuk individu dan keluarga yang membutuhkan pendampingan.</p>
+          <a href="program/konseling.html" class="card-link"><span data-i18n="card_link">Lihat Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon-wrap">
+            <div class="program-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="14" r="6"/><path d="M12 38v-4a10 10 0 0 1 10-10h4a10 10 0 0 1 10 10v4"/><circle cx="10" cy="18" r="4"/><path d="M2 38v-3a7 7 0 0 1 6-6.9"/><circle cx="38" cy="18" r="4"/><path d="M46 38v-3a7 7 0 0 0-6-6.9"/></svg></div>
+            <span class="program-num">3</span>
+          </div>
+          <h3 data-i18n="prog3_title">Program</h3>
+          <p data-i18n="prog3_desc">Berbagai program intervensi kesehatan yang dirancang untuk komunitas rentan.</p>
+          <a href="program/program.html" class="card-link"><span data-i18n="card_link">Lihat Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon-wrap">
+            <div class="program-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6v36M14 42h20M24 10L8 16m16-6l16 6"/><path d="M8 16l-5 11a6 6 0 0 0 10 0z"/><path d="M40 16l-5 11a6 6 0 0 0 10 0z"/></svg></div>
+            <span class="program-num">4</span>
+          </div>
+          <h3 data-i18n="prog4_title">Advokasi</h3>
+          <p data-i18n="prog4_desc">Mendorong kebijakan publik yang mendukung pencegahan masalah kesehatan.</p>
+          <a href="program/advokasi.html" class="card-link"><span data-i18n="card_link">Lihat Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon-wrap">
+            <div class="program-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 12c-3-3-9-4-14-3v24c5-1 11 0 14 3 3-3 9-4 14-3V9c-5-1-11 0-14 3z"/><path d="M24 12v24"/><path d="M29 23l6 3-6 3z" fill="currentColor" stroke="none"/></svg></div>
+            <span class="program-num">5</span>
+          </div>
+          <h3 data-i18n="prog5_title">Media Edukasi</h3>
+          <p data-i18n="prog5_desc">Konten edukatif untuk meningkatkan literasi kesehatan masyarakat.</p>
+          <a href="program/media-edukasi.html" class="card-link"><span data-i18n="card_link">Lihat Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon-wrap">
+            <div class="program-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="28" height="20" rx="2"/><path d="M12 22l6-6 4 4 8-8"/><path d="M26 12h4v4"/><path d="M20 34v-6M14 40h12"/></svg></div>
+            <span class="program-num">6</span>
+          </div>
+          <h3 data-i18n="prog6_title">Pelatihan dan Pengembangan Kapasitas</h3>
+          <p data-i18n="prog6_desc">Pelatihan untuk meningkatkan kapasitas kader dan tenaga kesehatan masyarakat.</p>
+          <a href="program/pelatihan-kapasitas.html" class="card-link"><span data-i18n="card_link">Lihat Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon-wrap">
+            <div class="program-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="24" r="13"/><circle cx="30" cy="24" r="13"/></svg></div>
+            <span class="program-num">7</span>
+          </div>
+          <h3 data-i18n="prog7_title">Kemitraan dan Pemberdayaan Masyarakat</h3>
+          <p data-i18n="prog7_desc">Kolaborasi dengan mitra untuk memberdayakan masyarakat secara berkelanjutan.</p>
+          <a href="program/kemitraan-pemberdayaan.html" class="card-link"><span data-i18n="card_link">Lihat Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+      </div>
+
+      <div class="cta-cards">
+        <a href="laporan.html" class="cta-card report">
+          <div style="display:flex;align-items:center;gap:18px;">
+            <div class="cta-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></div>
+            <div>
+              <h3 data-i18n="report_title">Laporan Pinar</h3>
+              <p data-i18n="report_desc">Akses berbagai laporan dan publikasi kami secara transparan dan akuntabel.</p>
+            </div>
+          </div>
+          <div class="cta-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></div>
+        </a>
+        <a href="donasi.html" class="cta-card donate">
+          <div style="display:flex;align-items:center;gap:18px;">
+            <div class="cta-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+            <div>
+              <h3 data-i18n="donate_title">Donasi</h3>
+              <p data-i18n="donate_desc">Dukung program kami dan bersama-sama wujudkan perubahan yang berarti.</p>
+            </div>
+          </div>
+          <div class="cta-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="news">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="news_eyebrow">TERBARU</span>
+        <h2 data-i18n="news_title">Kegiatan &amp; Kabar Terbaru</h2>
+      </div>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-thumb" data-i18n="news_thumb_label">Foto Kegiatan</div>
+          <div class="news-body">
+            <div class="news-date" data-i18n="news_date_placeholder">TANGGAL</div>
+            <h3 data-i18n="news_title_placeholder">Judul Berita atau Kegiatan</h3>
+            <p data-i18n="news_desc_placeholder">Deskripsi singkat kegiatan atau berita akan tampil di sini.</p>
+            <a href="#" class="card-link"><span data-i18n="news_read">Baca Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-thumb" data-i18n="news_thumb_label">Foto Kegiatan</div>
+          <div class="news-body">
+            <div class="news-date" data-i18n="news_date_placeholder">TANGGAL</div>
+            <h3 data-i18n="news_title_placeholder">Judul Berita atau Kegiatan</h3>
+            <p data-i18n="news_desc_placeholder">Deskripsi singkat kegiatan atau berita akan tampil di sini.</p>
+            <a href="#" class="card-link"><span data-i18n="news_read">Baca Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-thumb" data-i18n="news_thumb_label">Foto Kegiatan</div>
+          <div class="news-body">
+            <div class="news-date" data-i18n="news_date_placeholder">TANGGAL</div>
+            <h3 data-i18n="news_title_placeholder">Judul Berita atau Kegiatan</h3>
+            <p data-i18n="news_desc_placeholder">Deskripsi singkat kegiatan atau berita akan tampil di sini.</p>
+            <a href="#" class="card-link"><span data-i18n="news_read">Baca Selengkapnya</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="padding-top:20px;">
+    <div class="final-cta">
+      <h2 data-i18n="cta_title">Mari Bergabung Bersama Kami</h2>
+      <p data-i18n="cta_desc">Setiap kontribusi Anda membantu kami mencegah masalah kesehatan dan memberdayakan lebih banyak masyarakat.</p>
+      <a href="donasi.html" class="btn btn-primary" data-i18n="cta_btn">Donasi Sekarang</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark">P</span>
+          <span class="logo-text">PINAR</span>
+        </div>
+        <p data-i18n="footer_about">Yayasan yang berfokus pada pencegahan masalah kesehatan masyarakat melalui penelitian, edukasi, dan pemberdayaan komunitas.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="X">X</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_links_title">Tautan Cepat</h4>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Beranda</a></li>
+          <li><a href="tentang-pinar.html" data-i18n="nav_about">Tentang Pinar</a></li>
+          <li><a href="laporan.html" data-i18n="nav_report">Laporan Pinar</a></li>
+          <li><a href="donasi.html" data-i18n="nav_donate">Donasi</a></li>
+          <li><a href="kontak.html" data-i18n="nav_contact">Kontak Pinar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_programs_title">Program Kami</h4>
+        <ul>
+          <li><a href="program/penelitian-inovasi.html" data-i18n="prog1_title">Pusat Penelitian dan Inovasi</a></li>
+          <li><a href="program/konseling.html" data-i18n="prog2_title">Konseling</a></li>
+          <li><a href="program/advokasi.html" data-i18n="prog4_title">Advokasi</a></li>
+          <li><a href="program/media-edukasi.html" data-i18n="prog5_title">Media Edukasi</a></li>
+          <li><a href="program/pelatihan-kapasitas.html" data-i18n="prog6_title">Pelatihan dan Pengembangan Kapasitas</a></li>
+          <li><a href="program/kemitraan-pemberdayaan.html" data-i18n="prog7_title">Kemitraan dan Pemberdayaan Masyarakat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_contact_title">Kontak</h4>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span data-i18n="footer_address">Jakarta, Indonesia</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          <span>+62 21 0000 0000</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <span>info@pinarfoundation.org</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Pinar Foundation. <span data-i18n="footer_rights">Hak Cipta Dilindungi.</span></span>
+      <div class="legal-links">
+        <a href="#" data-i18n="footer_privacy">Kebijakan Privasi</a>
+        <a href="#" data-i18n="footer_terms">Syarat &amp; Ketentuan</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var translations = {
+    nav_home:{id:"Beranda",en:"Home"},
+    nav_about:{id:"Tentang Pinar",en:"About Pinar"},
+    nav_contact:{id:"Kontak Pinar",en:"Contact Pinar"},
+    nav_report:{id:"Laporan Pinar",en:"Pinar Reports"},
+    nav_donate:{id:"Donasi",en:"Donate"},
+    hero_badge:{id:"YAYASAN PINAR",en:"PINAR FOUNDATION"},
+    hero_subtitle:{id:"Pencegahan Masalah Kesehatan",en:"Preventing Health Problems"},
+    hero_desc:{id:"Kami hadir untuk mencegah masalah kesehatan masyarakat melalui penelitian, edukasi, konseling, dan pemberdayaan komunitas di seluruh Indonesia.",en:"We work to prevent public health problems through research, education, counseling, and community empowerment across Indonesia."},
+    hero_cta_primary:{id:"Info Selengkapnya",en:"Learn More"},
+    hero_cta_secondary:{id:"Donasi Sekarang",en:"Donate Now"},
+    stat1_label:{id:"Penerima Manfaat",en:"Beneficiaries Reached"},
+    stat2_label:{id:"Program Aktif",en:"Active Programs"},
+    stat3_label:{id:"Kota Terjangkau",en:"Cities Reached"},
+    stat4_label:{id:"Tahun Berdampak",en:"Years of Impact"},
+    about_eyebrow:{id:"TENTANG KAMI",en:"ABOUT US"},
+    about_title:{id:"Mengenal Pinar Foundation",en:"Get to Know Pinar Foundation"},
+    about_p1:{id:"Pinar Foundation adalah yayasan yang berfokus pada pencegahan masalah kesehatan masyarakat melalui pendekatan berbasis penelitian, edukasi, dan pemberdayaan komunitas.",en:"Pinar Foundation is dedicated to preventing public health problems through a research-based approach to education and community empowerment."},
+    about_p2:{id:"Kami percaya bahwa pencegahan adalah langkah paling efektif untuk menciptakan masyarakat yang lebih sehat dan berdaya, dan kami bekerja sama dengan mitra lokal maupun nasional untuk mewujudkannya.",en:"We believe prevention is the most effective way to build a healthier, more empowered society, and we work with local and national partners to make it happen."},
+    about_link:{id:"Selengkapnya Tentang Kami",en:"More About Us"},
+    about_visual_label:{id:"Foto / Ilustrasi Kegiatan",en:"Photo / Activity Illustration"},
+    programs_eyebrow:{id:"APA YANG KAMI LAKUKAN",en:"WHAT WE DO"},
+    programs_title:{id:"Program &amp; Layanan Kami",en:"Our Programs &amp; Services"},
+    programs_subtitle:{id:"Tujuh pilar utama yang menjadi fondasi kerja Pinar Foundation dalam mencegah masalah kesehatan masyarakat.",en:"Seven core pillars that form the foundation of Pinar Foundation's work in preventing public health problems."},
+    prog1_title:{id:"Pusat Penelitian dan Inovasi",en:"Research and Innovation Center"},
+    prog1_desc:{id:"Riset berbasis bukti untuk mendukung kebijakan dan intervensi kesehatan masyarakat.",en:"Evidence-based research to support public health policy and interventions."},
+    prog2_title:{id:"Konseling",en:"Counseling"},
+    prog2_desc:{id:"Layanan konseling profesional untuk individu dan keluarga yang membutuhkan pendampingan.",en:"Professional counseling services for individuals and families in need of support."},
+    prog3_title:{id:"Program",en:"Programs"},
+    prog3_desc:{id:"Berbagai program intervensi kesehatan yang dirancang untuk komunitas rentan.",en:"A range of health intervention programs designed for vulnerable communities."},
+    prog4_title:{id:"Advokasi",en:"Advocacy"},
+    prog4_desc:{id:"Mendorong kebijakan publik yang mendukung pencegahan masalah kesehatan.",en:"Promoting public policies that support health problem prevention."},
+    prog5_title:{id:"Media Edukasi",en:"Educational Media"},
+    prog5_desc:{id:"Konten edukatif untuk meningkatkan literasi kesehatan masyarakat.",en:"Educational content to improve public health literacy."},
+    prog6_title:{id:"Pelatihan dan Pengembangan Kapasitas",en:"Training and Capacity Building"},
+    prog6_desc:{id:"Pelatihan untuk meningkatkan kapasitas kader dan tenaga kesehatan masyarakat.",en:"Training to build the capacity of community health workers and volunteers."},
+    prog7_title:{id:"Kemitraan dan Pemberdayaan Masyarakat",en:"Partnership and Community Empowerment"},
+    prog7_desc:{id:"Kolaborasi dengan mitra untuk memberdayakan masyarakat secara berkelanjutan.",en:"Collaboration with partners to sustainably empower communities."},
+    card_link:{id:"Lihat Selengkapnya",en:"View Details"},
+    report_title:{id:"Laporan Pinar",en:"Pinar Reports"},
+    report_desc:{id:"Akses berbagai laporan dan publikasi kami secara transparan dan akuntabel.",en:"Access our reports and publications with full transparency and accountability."},
+    donate_title:{id:"Donasi",en:"Donate"},
+    donate_desc:{id:"Dukung program kami dan bersama-sama wujudkan perubahan yang berarti.",en:"Support our programs and help create meaningful change together."},
+    news_eyebrow:{id:"TERBARU",en:"LATEST"},
+    news_title:{id:"Kegiatan &amp; Kabar Terbaru",en:"News &amp; Latest Activities"},
+    news_thumb_label:{id:"Foto Kegiatan",en:"Activity Photo"},
+    news_date_placeholder:{id:"TANGGAL",en:"DATE"},
+    news_title_placeholder:{id:"Judul Berita atau Kegiatan",en:"News or Activity Title"},
+    news_desc_placeholder:{id:"Deskripsi singkat kegiatan atau berita akan tampil di sini.",en:"A short description of the news or activity will appear here."},
+    news_read:{id:"Baca Selengkapnya",en:"Read More"},
+    cta_title:{id:"Mari Bergabung Bersama Kami",en:"Join Us Today"},
+    cta_desc:{id:"Setiap kontribusi Anda membantu kami mencegah masalah kesehatan dan memberdayakan lebih banyak masyarakat.",en:"Every contribution helps us prevent health problems and empower more communities."},
+    cta_btn:{id:"Donasi Sekarang",en:"Donate Now"},
+    footer_about:{id:"Yayasan yang berfokus pada pencegahan masalah kesehatan masyarakat melalui penelitian, edukasi, dan pemberdayaan komunitas.",en:"A foundation focused on preventing public health problems through research, education, and community empowerment."},
+    footer_links_title:{id:"Tautan Cepat",en:"Quick Links"},
+    footer_programs_title:{id:"Program Kami",en:"Our Programs"},
+    footer_contact_title:{id:"Kontak",en:"Contact"},
+    footer_address:{id:"Jakarta, Indonesia",en:"Jakarta, Indonesia"},
+    footer_rights:{id:"Hak Cipta Dilindungi.",en:"All Rights Reserved."},
+    footer_privacy:{id:"Kebijakan Privasi",en:"Privacy Policy"},
+    footer_terms:{id:"Syarat &amp; Ketentuan",en:"Terms &amp; Conditions"}
+  };
+
+  function applyLanguage(lang){
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      var entry = translations[key];
+      if(entry && entry[lang] !== undefined){
+        el.innerHTML = entry[lang];
+      }
+    });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    try{ localStorage.setItem('pinar-lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      applyLanguage(btn.getAttribute('data-lang-btn'));
+    });
+  });
+
+  var savedLang = 'id';
+  try{ savedLang = localStorage.getItem('pinar-lang') || 'id'; }catch(e){}
+  applyLanguage(savedLang);
+
+  var hamburgerBtn = document.getElementById('hamburgerBtn');
+  var navLinks = document.querySelector('nav.nav-links');
+  if(hamburgerBtn){
+    hamburgerBtn.addEventListener('click', function(){
+      var isOpen = navLinks.style.display === 'flex';
+      navLinks.style.display = isOpen ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '68px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.background = '#fff';
+      navLinks.style.padding = '18px 24px';
+      navLinks.style.boxShadow = '0 10px 20px rgba(15,30,90,0.08)';
+      navLinks.style.gap = '16px';
+    });
+  }
+
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  var yearEl = document.getElementById('year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+})();
+</script>
+</body>
+</html>

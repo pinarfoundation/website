@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang Pinar — Pinar Foundation</title>
+<meta name="description" content="Kenali sejarah, visi-misi, nilai, struktur organisasi, dan legalitas Pinar Foundation, yayasan yang berfokus pada pencegahan masalah kesehatan masyarakat.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a3fa8'/%3E%3Ctext x='50' y='69' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#1a3fa8;
+    --primary-dark:#122c7d;
+    --primary-darker:#0b1c54;
+    --primary-light:#eaf0fd;
+    --accent:#2f5cdb;
+    --text-dark:#16213e;
+    --text-muted:#5b6479;
+    --white:#ffffff;
+    --gray-bg:#f5f7fc;
+    --border:#e3e7f3;
+    --radius:14px;
+    --shadow:0 14px 34px rgba(15,30,90,0.10);
+    --shadow-sm:0 6px 18px rgba(15,30,90,0.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--text-dark);line-height:1.6;background:var(--white);overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.25;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .skip-link{position:absolute;left:-999px;top:0;background:var(--primary);color:#fff;padding:10px 16px;z-index:2000;border-radius:0 0 8px 0;}
+  .skip-link:focus{left:0;}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;border:2px solid transparent;transition:all .2s ease;white-space:nowrap;}
+  .btn-primary{background:var(--white);color:var(--primary);}
+  .btn-primary:hover{background:var(--primary-light);transform:translateY(-2px);}
+  .btn-outline{background:transparent;border-color:rgba(255,255,255,0.55);color:var(--white);}
+  .btn-outline:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px);}
+  .btn-solid{background:var(--primary);color:var(--white);}
+  .btn-solid:hover{background:var(--primary-dark);transform:translateY(-2px);}
+
+  header{position:sticky;top:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--border);transition:box-shadow .25s ease;}
+  header.scrolled{box-shadow:0 6px 20px rgba(15,30,90,0.08);}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1200px;margin:0 auto;gap:16px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;}
+  .logo-mark{width:42px;height:42px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;letter-spacing:.5px;position:relative;flex-shrink:0;}
+  .logo-mark::after{content:'✦';position:absolute;top:-7px;right:-5px;font-size:12px;color:#ffd24a;}
+  .logo-text{font-weight:800;font-size:20px;color:var(--primary-darker);letter-spacing:.3px;}
+  nav.nav-links{display:flex;align-items:center;gap:30px;}
+  nav.nav-links a{font-weight:500;font-size:15px;color:var(--text-dark);position:relative;padding:6px 0;}
+  nav.nav-links a.active,nav.nav-links a:hover{color:var(--primary);}
+  nav.nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--primary);border-radius:2px;}
+  .nav-actions{display:flex;align-items:center;gap:12px;}
+  .lang-toggle{display:flex;align-items:center;border:1px solid var(--border);border-radius:999px;overflow:hidden;font-size:13px;font-weight:700;}
+  .lang-toggle button{padding:7px 13px;background:var(--white);color:var(--text-muted);border:none;cursor:pointer;font-weight:700;font-family:'Inter',sans-serif;font-size:13px;}
+  .lang-toggle button.active{background:var(--primary);color:#fff;}
+  .nav-btn-outline{padding:9px 18px;border-radius:999px;border:2px solid var(--primary);color:var(--primary);font-weight:600;font-size:14px;}
+  .nav-btn-outline:hover{background:var(--primary-light);}
+  .nav-btn-solid{padding:9px 18px;border-radius:999px;background:var(--primary);color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;}
+  .nav-btn-solid:hover{background:var(--primary-dark);}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .hamburger span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;}
+
+  .page-hero{position:relative;background:linear-gradient(135deg,var(--primary-darker) 0%,var(--primary) 55%,var(--accent) 100%);overflow:hidden;padding:56px 0 68px;color:#fff;}
+  .page-hero::before{content:'';position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,0.06);top:-150px;right:-80px;}
+  .hero-dots{position:absolute;left:0;top:0;bottom:0;width:200px;background-image:radial-gradient(rgba(255,255,255,0.18) 1.5px,transparent 1.5px);background-size:18px 18px;opacity:.5;pointer-events:none;}
+  .page-hero-inner{position:relative;max-width:640px;}
+  .breadcrumb{font-size:13.5px;color:rgba(255,255,255,0.75);margin-bottom:16px;display:flex;gap:8px;align-items:center;}
+  .breadcrumb a:hover{color:#fff;}
+  .page-hero h1{font-size:38px;font-weight:800;margin-bottom:12px;}
+  .page-hero p{color:rgba(255,255,255,0.85);font-size:16px;max-width:520px;}
+
+  section{padding:90px 0 70px;}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--primary);background:var(--primary-light);padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+  .section-head{max-width:640px;margin:0 auto 50px;text-align:center;}
+  .section-head h2{font-size:32px;font-weight:800;color:var(--text-dark);margin-bottom:12px;}
+  .section-head p{color:var(--text-muted);font-size:16px;}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-text .eyebrow{margin-bottom:14px;}
+  .about-text h2{font-size:30px;font-weight:800;margin-bottom:18px;}
+  .about-text p{color:var(--text-muted);margin-bottom:16px;font-size:15.5px;}
+  .about-visual{background:linear-gradient(135deg,var(--primary-light),#dce6fb);border-radius:var(--radius);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:700;font-size:15px;border:1px dashed var(--primary);}
+
+  .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .mission-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-sm);}
+  .mission-card .icon-badge{width:50px;height:50px;border-radius:14px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .mission-card .icon-badge svg{width:24px;height:24px;}
+  .mission-card h3{font-size:19px;font-weight:700;margin-bottom:12px;}
+  .mission-card p{font-size:14.5px;color:var(--text-muted);}
+  .mission-list li{display:flex;gap:10px;margin-bottom:12px;font-size:14.5px;color:var(--text-muted);}
+  .mission-list li svg{width:18px;height:18px;color:var(--primary);flex-shrink:0;margin-top:2px;}
+
+  .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;}
+  .value-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px 24px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease;}
+  .value-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+  .value-icon{width:54px;height:54px;border-radius:14px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+  .value-icon svg{width:26px;height:26px;}
+  .value-card h3{font-size:16.5px;font-weight:700;margin-bottom:8px;}
+  .value-card p{font-size:14px;color:var(--text-muted);}
+
+  .team{background:var(--gray-bg);}
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+  .team-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px 20px;text-align:center;box-shadow:var(--shadow-sm);}
+  .team-avatar{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;margin:0 auto 16px;}
+  .team-card h3{font-size:16px;font-weight:700;margin-bottom:4px;}
+  .team-card span{font-size:13.5px;color:var(--primary);font-weight:600;}
+
+  .legal-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .legal-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow-sm);}
+  .legal-item .legal-icon{width:40px;height:40px;border-radius:10px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .legal-item .legal-icon svg{width:20px;height:20px;}
+  .legal-item h4{font-size:14.5px;font-weight:700;margin-bottom:4px;}
+  .legal-item p{font-size:14px;color:var(--text-muted);}
+
+  .final-cta{background:linear-gradient(135deg,var(--primary-darker),var(--primary) 70%);border-radius:24px;margin:0 24px;padding:64px 40px;text-align:center;color:#fff;max-width:1152px;margin-left:auto;margin-right:auto;}
+  .final-cta h2{font-size:32px;font-weight:800;margin-bottom:14px;}
+  .final-cta p{color:rgba(255,255,255,0.85);max-width:520px;margin:0 auto 28px;}
+
+  footer{background:var(--primary-darker);color:rgba(255,255,255,0.75);padding:80px 0 0;margin-top:70px;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1.3fr 1.2fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-brand .logo-text{color:#fff;}
+  .footer-brand p{margin:16px 0 20px;font-size:14px;line-height:1.7;color:rgba(255,255,255,0.6);}
+  .social-row{display:flex;gap:10px;}
+  .social-row a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;color:#fff;}
+  .social-row a:hover{background:var(--accent);}
+  footer h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:20px;}
+  footer .footer-col ul li{margin-bottom:12px;}
+  footer .footer-col ul li a{font-size:14px;color:rgba(255,255,255,0.65);}
+  footer .footer-col ul li a:hover{color:#fff;}
+  .contact-item{display:flex;gap:10px;margin-bottom:14px;font-size:14px;color:rgba(255,255,255,0.65);}
+  .contact-item svg{width:18px;height:18px;flex-shrink:0;margin-top:1px;color:var(--accent);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-size:13px;color:rgba(255,255,255,0.5);flex-wrap:wrap;gap:10px;}
+  .footer-bottom .legal-links{display:flex;gap:20px;}
+  .footer-bottom .legal-links a{color:rgba(255,255,255,0.5);}
+  .footer-bottom .legal-links a:hover{color:#fff;}
+
+  @media (max-width:900px){
+    nav.nav-links{display:none;}
+    .hamburger{display:flex;}
+    .nav-actions .nav-btn-outline{display:none;}
+    .about-grid{grid-template-columns:1fr;}
+    .mission-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .page-hero h1{font-size:29px;}
+    section{padding:60px 0 46px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column;text-align:center;}
+    .final-cta{margin:0 16px;padding:44px 24px;}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Lewati ke konten</a>
+
+<header id="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">P</span>
+      <span class="logo-text">PINAR</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-i18n="nav_home">Beranda</a>
+      <a href="tentang-pinar.html" class="active" data-i18n="nav_about">Tentang Pinar</a>
+      <a href="kontak.html" data-i18n="nav_contact">Kontak Pinar</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-toggle">
+        <button type="button" data-lang-btn="id" class="active">ID</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+      <a href="laporan.html" class="nav-btn-outline" data-i18n="nav_report">Laporan Pinar</a>
+      <a href="donasi.html" class="nav-btn-solid" data-i18n="nav_donate">Donasi</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-dots"></div>
+    <div class="container page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html" data-i18n="nav_home">Beranda</a>
+        <span>/</span>
+        <span data-i18n="nav_about">Tentang Pinar</span>
+      </div>
+      <h1 data-i18n="page_title">Tentang Pinar Foundation</h1>
+      <p data-i18n="page_subtitle">Mengenal lebih dekat yayasan yang berkomitmen mencegah masalah kesehatan masyarakat di seluruh Indonesia.</p>
+    </div>
+  </section>
+
+  <!-- SEJARAH -->
+  <section class="history">
+    <div class="container about-grid">
+      <div class="about-visual" data-i18n="history_visual_label">Foto / Ilustrasi Sejarah</div>
+      <div class="about-text">
+        <span class="eyebrow" data-i18n="history_eyebrow">SEJARAH KAMI</span>
+        <h2 data-i18n="history_title">Perjalanan Pinar Foundation</h2>
+        <p data-i18n="history_p1">Pinar Foundation didirikan atas keprihatinan terhadap tingginya masalah kesehatan yang sebenarnya dapat dicegah di masyarakat. Sejak [tahun berdiri], kami berkomitmen membangun pendekatan pencegahan yang berbasis riset dan berpihak pada komunitas.</p>
+        <p data-i18n="history_p2">Dari langkah kecil di tingkat komunitas, Pinar Foundation terus berkembang menjadi yayasan yang menjalankan penelitian, konseling, edukasi, advokasi, pelatihan, hingga kemitraan pemberdayaan masyarakat di berbagai wilayah Indonesia.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISI MISI -->
+  <section class="mission" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="mission_eyebrow">VISI &amp; MISI</span>
+        <h2 data-i18n="mission_title">Arah dan Tujuan Kami</h2>
+      </div>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3 data-i18n="vision_title">Visi</h3>
+          <p data-i18n="vision_desc">Menjadi yayasan terdepan dalam pencegahan masalah kesehatan masyarakat di Indonesia melalui pendekatan berbasis bukti dan kemitraan yang berkelanjutan.</p>
+        </div>
+        <div class="mission-card">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.2L21 9l-5 4.6L17.4 21 12 17.3 6.6 21 8 13.6 3 9l6.4-.8z"/></svg></div>
+          <h3 data-i18n="mission_h_title">Misi</h3>
+          <ul class="mission-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="mission_item1">Melakukan penelitian berbasis bukti untuk mendukung kebijakan kesehatan masyarakat.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="mission_item2">Menyediakan layanan konseling dan media edukasi kesehatan yang mudah diakses.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="mission_item3">Mendorong advokasi kebijakan publik yang berpihak pada pencegahan.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="mission_item4">Membangun kemitraan untuk pelatihan dan pemberdayaan masyarakat berkelanjutan.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NILAI-NILAI -->
+  <section class="values" style="background:var(--gray-bg);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="values_eyebrow">NILAI KAMI</span>
+        <h2 data-i18n="values_title">Nilai-Nilai yang Kami Pegang</h2>
+        <p data-i18n="values_subtitle">Prinsip yang menjadi landasan setiap program dan layanan Pinar Foundation.</p>
+      </div>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3 data-i18n="value1_title">Integritas</h3>
+          <p data-i18n="value1_desc">Bekerja secara jujur, transparan, dan bertanggung jawab dalam setiap program.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6.5"/><circle cx="15" cy="12" r="6.5"/></svg></div>
+          <h3 data-i18n="value2_title">Kolaborasi</h3>
+          <p data-i18n="value2_desc">Bermitra dengan komunitas, pemerintah, dan lembaga lain demi dampak yang lebih luas.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V13M10 21V8M16 21V4M4 21h16"/></svg></div>
+          <h3 data-i18n="value3_title">Berbasis Bukti</h3>
+          <p data-i18n="value3_desc">Setiap program dirancang dan dievaluasi berdasarkan data dan riset yang valid.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 16-6 16-16-10 0-16 8-16 16z"/><path d="M4 20c2-6 6-10 12-13"/></svg></div>
+          <h3 data-i18n="value4_title">Dampak Berkelanjutan</h3>
+          <p data-i18n="value4_desc">Berorientasi pada perubahan jangka panjang, bukan hanya bantuan sesaat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRUKTUR ORGANISASI / TIM -->
+  <section class="team">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="team_eyebrow">TIM KAMI</span>
+        <h2 data-i18n="team_title">Struktur Organisasi</h2>
+        <p data-i18n="team_subtitle">Tim yang menjalankan visi dan misi Pinar Foundation.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">P</div>
+          <h3 data-i18n="team_role1_name">[Nama Pembina]</h3>
+          <span data-i18n="team_role1_title">Pembina</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">P</div>
+          <h3 data-i18n="team_role2_name">[Nama Pengawas]</h3>
+          <span data-i18n="team_role2_title">Pengawas</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">K</div>
+          <h3 data-i18n="team_role3_name">[Nama Ketua]</h3>
+          <span data-i18n="team_role3_title">Ketua / Direktur Eksekutif</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">S</div>
+          <h3 data-i18n="team_role4_name">[Nama Sekretaris]</h3>
+          <span data-i18n="team_role4_title">Sekretaris</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">B</div>
+          <h3 data-i18n="team_role5_name">[Nama Bendahara]</h3>
+          <span data-i18n="team_role5_title">Bendahara</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGALITAS -->
+  <section class="legal" style="background:var(--gray-bg);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="legal_eyebrow">LEGALITAS</span>
+        <h2 data-i18n="legal_title">Status Legal Yayasan</h2>
+        <p data-i18n="legal_subtitle">Pinar Foundation terdaftar secara resmi dan menjalankan operasionalnya sesuai regulasi yang berlaku.</p>
+      </div>
+      <div class="legal-list">
+        <div class="legal-item">
+          <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/></svg></div>
+          <div>
+            <h4 data-i18n="legal_item1_title">Akta Pendirian</h4>
+            <p data-i18n="legal_item1_desc">Nomor [Nomor Akta], tanggal [Tanggal Akta]</p>
+          </div>
+        </div>
+        <div class="legal-item">
+          <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg></div>
+          <div>
+            <h4 data-i18n="legal_item2_title">SK Kemenkumham</h4>
+            <p data-i18n="legal_item2_desc">Nomor [Nomor SK], tanggal [Tanggal SK]</p>
+          </div>
+        </div>
+        <div class="legal-item">
+          <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15h4M7 11h.01"/><circle cx="16" cy="11" r="2"/></svg></div>
+          <div>
+            <h4 data-i18n="legal_item3_title">NPWP Yayasan</h4>
+            <p data-i18n="legal_item3_desc">[Nomor NPWP Yayasan]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="padding-top:10px;">
+    <div class="final-cta">
+      <h2 data-i18n="cta_title">Mari Bergabung Bersama Kami</h2>
+      <p data-i18n="cta_desc">Setiap kontribusi Anda membantu kami mencegah masalah kesehatan dan memberdayakan lebih banyak masyarakat.</p>
+      <a href="donasi.html" class="btn btn-primary" data-i18n="cta_btn">Donasi Sekarang</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark">P</span>
+          <span class="logo-text">PINAR</span>
+        </div>
+        <p data-i18n="footer_about">Yayasan yang berfokus pada pencegahan masalah kesehatan masyarakat melalui penelitian, edukasi, dan pemberdayaan komunitas.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="X">X</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_links_title">Tautan Cepat</h4>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Beranda</a></li>
+          <li><a href="tentang-pinar.html" data-i18n="nav_about">Tentang Pinar</a></li>
+          <li><a href="laporan.html" data-i18n="nav_report">Laporan Pinar</a></li>
+          <li><a href="donasi.html" data-i18n="nav_donate">Donasi</a></li>
+          <li><a href="kontak.html" data-i18n="nav_contact">Kontak Pinar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_programs_title">Program Kami</h4>
+        <ul>
+          <li><a href="program/penelitian-inovasi.html" data-i18n="prog1_title">Pusat Penelitian dan Inovasi</a></li>
+          <li><a href="program/konseling.html" data-i18n="prog2_title">Konseling</a></li>
+          <li><a href="program/advokasi.html" data-i18n="prog4_title">Advokasi</a></li>
+          <li><a href="program/media-edukasi.html" data-i18n="prog5_title">Media Edukasi</a></li>
+          <li><a href="program/pelatihan-kapasitas.html" data-i18n="prog6_title">Pelatihan dan Pengembangan Kapasitas</a></li>
+          <li><a href="program/kemitraan-pemberdayaan.html" data-i18n="prog7_title">Kemitraan dan Pemberdayaan Masyarakat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_contact_title">Kontak</h4>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span data-i18n="footer_address">Jakarta, Indonesia</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          <span>+62 21 0000 0000</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <span>info@pinarfoundation.org</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Pinar Foundation. <span data-i18n="footer_rights">Hak Cipta Dilindungi.</span></span>
+      <div class="legal-links">
+        <a href="#" data-i18n="footer_privacy">Kebijakan Privasi</a>
+        <a href="#" data-i18n="footer_terms">Syarat &amp; Ketentuan</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var translations = {
+    nav_home:{id:"Beranda",en:"Home"},
+    nav_about:{id:"Tentang Pinar",en:"About Pinar"},
+    nav_contact:{id:"Kontak Pinar",en:"Contact Pinar"},
+    nav_report:{id:"Laporan Pinar",en:"Pinar Reports"},
+    nav_donate:{id:"Donasi",en:"Donate"},
+    page_title:{id:"Tentang Pinar Foundation",en:"About Pinar Foundation"},
+    page_subtitle:{id:"Mengenal lebih dekat yayasan yang berkomitmen mencegah masalah kesehatan masyarakat di seluruh Indonesia.",en:"Get to know the foundation committed to preventing public health problems across Indonesia."},
+    history_visual_label:{id:"Foto / Ilustrasi Sejarah",en:"Photo / History Illustration"},
+    history_eyebrow:{id:"SEJARAH KAMI",en:"OUR HISTORY"},
+    history_title:{id:"Perjalanan Pinar Foundation",en:"The Journey of Pinar Foundation"},
+    history_p1:{id:"Pinar Foundation didirikan atas keprihatinan terhadap tingginya masalah kesehatan yang sebenarnya dapat dicegah di masyarakat. Sejak [tahun berdiri], kami berkomitmen membangun pendekatan pencegahan yang berbasis riset dan berpihak pada komunitas.",en:"Pinar Foundation was established out of concern over preventable public health problems. Since [founding year], we have been committed to building a research-based, community-centered approach to prevention."},
+    history_p2:{id:"Dari langkah kecil di tingkat komunitas, Pinar Foundation terus berkembang menjadi yayasan yang menjalankan penelitian, konseling, edukasi, advokasi, pelatihan, hingga kemitraan pemberdayaan masyarakat di berbagai wilayah Indonesia.",en:"From small community-level initiatives, Pinar Foundation has grown into an organization running research, counseling, education, advocacy, training, and community partnership programs across Indonesia."},
+    mission_eyebrow:{id:"VISI &amp; MISI",en:"VISION &amp; MISSION"},
+    mission_title:{id:"Arah dan Tujuan Kami",en:"Our Direction and Purpose"},
+    vision_title:{id:"Visi",en:"Vision"},
+    vision_desc:{id:"Menjadi yayasan terdepan dalam pencegahan masalah kesehatan masyarakat di Indonesia melalui pendekatan berbasis bukti dan kemitraan yang berkelanjutan.",en:"To become a leading foundation in preventing public health problems in Indonesia through an evidence-based approach and sustainable partnerships."},
+    mission_h_title:{id:"Misi",en:"Mission"},
+    mission_item1:{id:"Melakukan penelitian berbasis bukti untuk mendukung kebijakan kesehatan masyarakat.",en:"Conduct evidence-based research to support public health policy."},
+    mission_item2:{id:"Menyediakan layanan konseling dan media edukasi kesehatan yang mudah diakses.",en:"Provide accessible counseling services and health education media."},
+    mission_item3:{id:"Mendorong advokasi kebijakan publik yang berpihak pada pencegahan.",en:"Promote public policy advocacy that favors prevention."},
+    mission_item4:{id:"Membangun kemitraan untuk pelatihan dan pemberdayaan masyarakat berkelanjutan.",en:"Build partnerships for sustainable training and community empowerment."},
+    values_eyebrow:{id:"NILAI KAMI",en:"OUR VALUES"},
+    values_title:{id:"Nilai-Nilai yang Kami Pegang",en:"The Values We Hold"},
+    values_subtitle:{id:"Prinsip yang menjadi landasan setiap program dan layanan Pinar Foundation.",en:"The principles that underpin every Pinar Foundation program and service."},
+    value1_title:{id:"Integritas",en:"Integrity"},
+    value1_desc:{id:"Bekerja secara jujur, transparan, dan bertanggung jawab dalam setiap program.",en:"Working honestly, transparently, and responsibly in every program."},
+    value2_title:{id:"Kolaborasi",en:"Collaboration"},
+    value2_desc:{id:"Bermitra dengan komunitas, pemerintah, dan lembaga lain demi dampak yang lebih luas.",en:"Partnering with communities, government, and other institutions for broader impact."},
+    value3_title:{id:"Berbasis Bukti",en:"Evidence-Based"},
+    value3_desc:{id:"Setiap program dirancang dan dievaluasi berdasarkan data dan riset yang valid.",en:"Every program is designed and evaluated using valid data and research."},
+    value4_title:{id:"Dampak Berkelanjutan",en:"Sustainable Impact"},
+    value4_desc:{id:"Berorientasi pada perubahan jangka panjang, bukan hanya bantuan sesaat.",en:"Focused on long-term change, not just one-time assistance."},
+    team_eyebrow:{id:"TIM KAMI",en:"OUR TEAM"},
+    team_title:{id:"Struktur Organisasi",en:"Organizational Structure"},
+    team_subtitle:{id:"Tim yang menjalankan visi dan misi Pinar Foundation.",en:"The team driving Pinar Foundation's vision and mission."},
+    team_role1_name:{id:"[Nama Pembina]",en:"[Trustee Name]"},
+    team_role1_title:{id:"Pembina",en:"Trustee"},
+    team_role2_name:{id:"[Nama Pengawas]",en:"[Supervisor Name]"},
+    team_role2_title:{id:"Pengawas",en:"Supervisor"},
+    team_role3_name:{id:"[Nama Ketua]",en:"[Chairperson Name]"},
+    team_role3_title:{id:"Ketua / Direktur Eksekutif",en:"Chairperson / Executive Director"},
+    team_role4_name:{id:"[Nama Sekretaris]",en:"[Secretary Name]"},
+    team_role4_title:{id:"Sekretaris",en:"Secretary"},
+    team_role5_name:{id:"[Nama Bendahara]",en:"[Treasurer Name]"},
+    team_role5_title:{id:"Bendahara",en:"Treasurer"},
+    legal_eyebrow:{id:"LEGALITAS",en:"LEGAL STATUS"},
+    legal_title:{id:"Status Legal Yayasan",en:"Foundation's Legal Status"},
+    legal_subtitle:{id:"Pinar Foundation terdaftar secara resmi dan menjalankan operasionalnya sesuai regulasi yang berlaku.",en:"Pinar Foundation is officially registered and operates in accordance with applicable regulations."},
+    legal_item1_title:{id:"Akta Pendirian",en:"Deed of Establishment"},
+    legal_item1_desc:{id:"Nomor [Nomor Akta], tanggal [Tanggal Akta]",en:"Number [Deed Number], dated [Deed Date]"},
+    legal_item2_title:{id:"SK Kemenkumham",en:"Ministry of Law Decree"},
+    legal_item2_desc:{id:"Nomor [Nomor SK], tanggal [Tanggal SK]",en:"Number [Decree Number], dated [Decree Date]"},
+    legal_item3_title:{id:"NPWP Yayasan",en:"Foundation Tax ID"},
+    legal_item3_desc:{id:"[Nomor NPWP Yayasan]",en:"[Foundation Tax ID Number]"},
+    cta_title:{id:"Mari Bergabung Bersama Kami",en:"Join Us Today"},
+    cta_desc:{id:"Setiap kontribusi Anda membantu kami mencegah masalah kesehatan dan memberdayakan lebih banyak masyarakat.",en:"Every contribution helps us prevent health problems and empower more communities."},
+    cta_btn:{id:"Donasi Sekarang",en:"Donate Now"},
+    footer_about:{id:"Yayasan yang berfokus pada pencegahan masalah kesehatan masyarakat melalui penelitian, edukasi, dan pemberdayaan komunitas.",en:"A foundation focused on preventing public health problems through research, education, and community empowerment."},
+    footer_links_title:{id:"Tautan Cepat",en:"Quick Links"},
+    footer_programs_title:{id:"Program Kami",en:"Our Programs"},
+    footer_contact_title:{id:"Kontak",en:"Contact"},
+    footer_address:{id:"Jakarta, Indonesia",en:"Jakarta, Indonesia"},
+    footer_rights:{id:"Hak Cipta Dilindungi.",en:"All Rights Reserved."},
+    footer_privacy:{id:"Kebijakan Privasi",en:"Privacy Policy"},
+    footer_terms:{id:"Syarat &amp; Ketentuan",en:"Terms &amp; Conditions"},
+    prog1_title:{id:"Pusat Penelitian dan Inovasi",en:"Research and Innovation Center"},
+    prog2_title:{id:"Konseling",en:"Counseling"},
+    prog4_title:{id:"Advokasi",en:"Advocacy"},
+    prog5_title:{id:"Media Edukasi",en:"Educational Media"},
+    prog6_title:{id:"Pelatihan dan Pengembangan Kapasitas",en:"Training and Capacity Building"},
+    prog7_title:{id:"Kemitraan dan Pemberdayaan Masyarakat",en:"Partnership and Community Empowerment"}
+  };
+
+  function applyLanguage(lang){
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      var entry = translations[key];
+      if(entry && entry[lang] !== undefined){
+        el.innerHTML = entry[lang];
+      }
+    });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    try{ localStorage.setItem('pinar-lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      applyLanguage(btn.getAttribute('data-lang-btn'));
+    });
+  });
+
+  var savedLang = 'id';
+  try{ savedLang = localStorage.getItem('pinar-lang') || 'id'; }catch(e){}
+  applyLanguage(savedLang);
+
+  var hamburgerBtn = document.getElementById('hamburgerBtn');
+  var navLinks = document.querySelector('nav.nav-links');
+  if(hamburgerBtn){
+    hamburgerBtn.addEventListener('click', function(){
+      var isOpen = navLinks.style.display === 'flex';
+      navLinks.style.display = isOpen ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '68px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.background = '#fff';
+      navLinks.style.padding = '18px 24px';
+      navLinks.style.boxShadow = '0 10px 20px rgba(15,30,90,0.08)';
+      navLinks.style.gap = '16px';
+    });
+  }
+
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  var yearEl = document.getElementById('year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+})();
+</script>
+</body>
+</html>
